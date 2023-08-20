@@ -1,5 +1,7 @@
-import Link from 'next/link'
-import Messages from './messages'
+/** @format */
+
+import Link from "next/link";
+import Messages from "./messages";
 
 export default function Login() {
   return (
@@ -21,7 +23,7 @@ export default function Login() {
           className="mr-2 h-4 w-4 transition-transform group-hover:-translate-x-1"
         >
           <polyline points="15 18 9 12 15 6" />
-        </svg>{' '}
+        </svg>{" "}
         Back
       </Link>
 
@@ -30,7 +32,10 @@ export default function Login() {
         action="/auth/sign-in"
         method="post"
       >
-        <label className="text-md" htmlFor="email">
+        <label
+          className="text-md"
+          htmlFor="email"
+        >
           Email
         </label>
         <input
@@ -39,7 +44,10 @@ export default function Login() {
           placeholder="you@example.com"
           required
         />
-        <label className="text-md" htmlFor="password">
+        <label
+          className="text-md"
+          htmlFor="password"
+        >
           Password
         </label>
         <input
@@ -54,12 +62,12 @@ export default function Login() {
         </button>
         <button
           formAction="/auth/sign-up"
-          className="border border-gray-700 rounded px-4 py-2 text-black mb-2"
+          className="border border-gray-700 rounded px-4 py-2 text-white mb-2"
         >
           Sign Up
         </button>
         <Messages />
       </form>
     </div>
-  )
+  );
 }
