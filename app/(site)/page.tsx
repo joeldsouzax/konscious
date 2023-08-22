@@ -8,6 +8,8 @@ import { NextPage } from "next";
 import { Database } from "@/types";
 import Alert from "@/components/Alert";
 import Category from "@/components/Category";
+import { BsCalendarRange, BsChevronDown } from "react-icons/bs";
+import { IoQrCodeOutline } from "react-icons/io5";
 
 const Index: NextPage = async () => {
   const supabase = createServerComponentClient<Database>({ cookies });
@@ -22,12 +24,6 @@ const Index: NextPage = async () => {
         title="HyperUI"
         subtitle="Free Open Source Tailwind CSS Components"
       >
-        HyperUI is a collection of free Tailwind CSS components that can be used
-        in your next project. With a range of components, you can build your
-        next marketing website, admin dashboard, eCommerce store and much more.
-      </HeroBanner>
-
-      <Container className="pb-8 lg:pb-12">
         {data ? (
           <div className="grid grid-cols-1 gap-4 lg:grid-cols-2 lg:gap-8">
             {data.map((category) => {
@@ -51,7 +47,7 @@ const Index: NextPage = async () => {
             <div></div>
           </div>
         )}
-      </Container>
+      </HeroBanner>
     </>
   );
 };
