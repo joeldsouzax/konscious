@@ -1,4 +1,4 @@
 /** @format */
 
-export * from "./supabase";
-export * from "./utils";
+export * from "./database";
+export * from "./generated_supabase";

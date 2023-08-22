@@ -13,30 +13,30 @@ export interface Database {
     Tables: {
       category: {
         Row: {
-          category_id: number | null;
           created_at: string;
           description: string | null;
           id: number;
+          parent_id: number | null;
           title: string | null;
         };
         Insert: {
-          category_id?: number | null;
           created_at?: string;
           description?: string | null;
           id?: number;
+          parent_id?: number | null;
           title?: string | null;
         };
         Update: {
-          category_id?: number | null;
           created_at?: string;
           description?: string | null;
           id?: number;
+          parent_id?: number | null;
           title?: string | null;
         };
         Relationships: [
           {
-            foreignKeyName: "category_category_id_fkey";
-            columns: ["category_id"];
+            foreignKeyName: "category_parent_id_fkey";
+            columns: ["parent_id"];
             referencedRelation: "category";
             referencedColumns: ["id"];
           },

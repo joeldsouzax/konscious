@@ -1,7 +1,7 @@
 /** @format */
 
+import { Database } from "./generated_supabase";
 import { PostgrestError } from "@supabase/supabase-js";
-import { Database } from "./supabase";
 
 export type DbResult<T> = T extends PromiseLike<infer U> ? U : never;
 export type DbResultOk<T> = T extends PromiseLike<{ data: infer U }>
