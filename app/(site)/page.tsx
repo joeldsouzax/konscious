@@ -1,54 +1,52 @@
 /** @format */
 
-import Container from "@/components/Container";
-import HeroBanner from "@/components/HeroBanner";
 import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
 import { cookies } from "next/headers";
 import { NextPage } from "next";
 import { Database } from "@/types";
-import Alert from "@/components/Alert";
-import Category from "@/components/Category";
-import { BsCalendarRange, BsChevronDown } from "react-icons/bs";
-import { IoQrCodeOutline } from "react-icons/io5";
 
 const Index: NextPage = async () => {
   const supabase = createServerComponentClient<Database>({ cookies });
 
   // show all categories if the user is admin / manager
-  // show the root categort for every user
-  const { data, error } = await supabase.from("category").select();
+
+  // get the root categories only
+  const { data, error } = await supabase
+    .from("category")
+    .select()
+    .is("parent_id", null)
+    .order("created_at", { ascending: true });
+
+  // TODO: role = admin and managers gets all categories in a tabular format
+  // TODO: no role auth users get root categories
 
   return (
-    <>
-      <HeroBanner
-        title="HyperUI"
-        subtitle="Free Open Source Tailwind CSS Components"
-      >
-        {data ? (
-          <div className="grid grid-cols-1 gap-4 lg:grid-cols-2 lg:gap-8">
-            {data.map((category) => {
-              return (
-                <Category
-                  key={category.id}
-                  {...category}
-                />
-              );
-            })}
-          </div>
-        ) : (
-          <div className="grid grid-cols-1 gap-4 lg:grid-cols-4 lg:gap-8">
-            <div></div>
-            <div className="lg:col-span-2">
-              <Alert
-                title="No Categories"
-                message="Sorry we could not find any categories for this festival"
-              />
-            </div>
-            <div></div>
-          </div>
-        )}
-      </HeroBanner>
-    </>
+    <div className="overflow-x-auto mx-auto max-w-2xl">
+      <table className="table">
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {data?.map((category) => (
+            <tr key={category.id}>
+              <td>
+                <div className="flex items-center space-x-3">
+                  <div className="font-bold">{category.title}</div>
+                </div>
+              </td>
+              <td>{category.description}</td>
+              <th>
+                <button className="btn btn-ghost btn-xs">details</button>
+              </th>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
   );
 };
 

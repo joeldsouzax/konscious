@@ -14,6 +14,7 @@ export interface Database {
           created_at: string
           description: string | null
           id: number
+          is_member: boolean | null
           parent_id: number | null
           title: string | null
         }
@@ -21,6 +22,7 @@ export interface Database {
           created_at?: string
           description?: string | null
           id?: number
+          is_member?: boolean | null
           parent_id?: number | null
           title?: string | null
         }
@@ -28,6 +30,7 @@ export interface Database {
           created_at?: string
           description?: string | null
           id?: number
+          is_member?: boolean | null
           parent_id?: number | null
           title?: string | null
         }

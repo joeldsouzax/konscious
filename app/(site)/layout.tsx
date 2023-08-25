@@ -1,6 +1,5 @@
 /** @format */
 
-import Footer from "@/components/Footer";
 import "../globals.css";
 import Header from "@/components/Header";
 import { Inter } from "next/font/google";
@@ -21,7 +20,6 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className="h-full scroll-smooth"
       dir="ltr"
     >
       <body className={twMerge(font.className, "font-sans antialiased")}>
@@ -29,11 +27,10 @@ export default function RootLayout({
         <main
           id="content"
           role="main"
-          className="bg-white"
+          className="container p-2"
         >
           {children}
         </main>
-        <Footer />
       </body>
     </html>
   );

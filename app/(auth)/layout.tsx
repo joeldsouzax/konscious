@@ -23,13 +23,7 @@ export default function RootLayout({
       dir="ltr"
     >
       <body className={twMerge(font.className, "font-sans antialiased")}>
-        <main
-          id="content"
-          role="main"
-          className="bg-white"
-        >
-          {children}
-        </main>
+        {children}
       </body>
     </html>
   );
