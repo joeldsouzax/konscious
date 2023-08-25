@@ -2,14 +2,17 @@
 "use server";
 
 import { Database } from "@/types";
-import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
+import {
+  SupabaseClient,
+  createServerComponentClient,
+} from "@supabase/auth-helpers-nextjs";
 import { revalidatePath } from "next/cache";
 import { cookies } from "next/headers";
 
-export async function deleteCategory(id: number | string) {
+export async function deleteCategory(id: number) {
   const supabase = createServerComponentClient<Database>({ cookies });
-  supabase.from("category").delete().eq("id", id);
-  revalidatePath("/admin");
+  const { data, error } = await supabase.from("category").delete().eq("id", id);
+  revalidatePath("/");
 }
 
 export const addCategory = async (formData: FormData) => {
@@ -23,6 +26,35 @@ export const addCategory = async (formData: FormData) => {
       .from("category")
       .insert({ title, description, parent_id })
       .select();
-    revalidatePath("/admin");
+    revalidatePath("/");
   }
+};
+
+export const getCategories = async (supabase: SupabaseClient<Database>) => {
+  const {
+    data: { user },
+    error: userError,
+  } = await supabase.auth.getUser();
+  if (user && user.app_metadata.role === "admin") {
+    const { data, error } = await supabase
+      .from("category")
+      .select()
+      .order("created_at", { ascending: true });
+
+    if (error) {
+      return [];
+    }
+    return data ?? [];
+  }
+  const { data, error } = await supabase
+    .from("category")
+    .select()
+    .is("parent_id", null)
+    .order("created_at", { ascending: true });
+
+  if (error) {
+    return [];
+  }
+
+  return data ?? [];
 };

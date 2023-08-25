@@ -1,7 +1,7 @@
 /** @format */
 
 import "../globals.css";
-import Header from "@/components/Header";
+import Header from "@/components/common/Header";
 import { Inter } from "next/font/google";
 import { twMerge } from "tailwind-merge";
 
@@ -27,7 +27,7 @@ export default function RootLayout({
         <main
           id="content"
           role="main"
-          className="container p-2"
+          className="container px-2 mt-4"
         >
           {children}
         </main>
