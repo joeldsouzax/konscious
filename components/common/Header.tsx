@@ -8,19 +8,11 @@ import { IoQrCodeOutline } from "react-icons/io5";
 import { BiSolidUserAccount, BiLogInCircle } from "react-icons/bi";
 
 import Link from "next/link";
+import { getUserRole } from "@/app/(site)/action";
 
 const Header: React.FC = async () => {
   const supabase = createServerComponentClient<Database>({ cookies });
-  const {
-    data: { user },
-    error,
-  } = await supabase.auth.getUser();
-
-  // profile can only be viewd by the user and no one else.
-  const { data, error: profileError } = await supabase
-    .from("profiles")
-    .select()
-    .limit(1);
+  const role = await getUserRole(supabase);
 
   return (
     <div className="navbar bg-base-200">
@@ -74,29 +66,26 @@ const Header: React.FC = async () => {
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">
-            <li>
-              <Link href="/scan">
-                <IoQrCodeOutline />
-                Open QR Code
-              </Link>
-            </li>
-            <li>
-              <Link href="/calendar">
-                <BsCalendarRange />
-                Events Calendar
-              </Link>
-            </li>
+            {role === "MEMBER" && (
+              <li>
+                <Link href="/scan">
+                  <IoQrCodeOutline />
+                  Open QR Code
+                </Link>
+              </li>
+            )}
+            {role === "ADMIN" && (
+              <li>
+                <Link href="/events">
+                  <BsCalendarRange />
+                  Events Management
+                </Link>
+              </li>
+            )}
           </ul>
         </div>
         <div className="navbar-end">
-          {user ? (
-            <form
-              action="/auth/sign-out"
-              method="post"
-            >
-              <button className="btn">Logout</button>
-            </form>
-          ) : (
+          {role === "ANON" ? (
             <Link
               href="/login"
               className="btn btn-primary"
@@ -104,6 +93,13 @@ const Header: React.FC = async () => {
               <BiSolidUserAccount />
               <p>Member Login</p>
             </Link>
+          ) : (
+            <form
+              action="/auth/sign-out"
+              method="post"
+            >
+              <button className="btn">Logout</button>
+            </form>
           )}
         </div>
       </header>

@@ -40,7 +40,7 @@ const Index: NextPage = async () => {
           <div className="divider"></div>
         </>
       )}
-      {role === "MEMBER" && (
+      {["MEMBER", "ANON"].includes(role) && (
         <div className="flex flex-row justify-center items-center flex-wrap gap-6 lg:gap-4">
           {categories.map(({ id, title, description }) => (
             <div

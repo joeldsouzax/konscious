@@ -9,13 +9,13 @@ import {
 import { revalidatePath } from "next/cache";
 import { cookies } from "next/headers";
 
-export async function deleteCategory(id: number) {
+export async function deleteEvent(id: number) {
   const supabase = createServerComponentClient<Database>({ cookies });
   const { data, error } = await supabase.from("category").delete().eq("id", id);
   revalidatePath("/");
 }
 
-export const getCategories = async (supabase: SupabaseClient<Database>) => {
+export const getEvents = async (supabase: SupabaseClient<Database>) => {
   const {
     data: { user },
     error: userError,
@@ -42,16 +42,4 @@ export const getCategories = async (supabase: SupabaseClient<Database>) => {
   }
 
   return data ?? [];
-};
-
-export const getUserRole = async (supabase: SupabaseClient<Database>) => {
-  const {
-    data: { user },
-    error: userError,
-  } = await supabase.auth.getUser();
-
-  if (user && user.app_metadata.role === "admin") return "ADMIN";
-  if (user && user.app_metadata.role === "manager") return "MANAGER";
-  if (user) return "MEMBER";
-  return "ANON";
 };

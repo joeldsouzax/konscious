@@ -9,7 +9,7 @@ interface CategoryFormProps {
 const CategoryForm: React.FC<CategoryFormProps> = ({ categories }) => {
   return (
     <form
-      className="flex flex-col max-w-sm mx-auto gap-4 justify-center"
+      className="flex flex-col max-w-md mx-auto gap-4 justify-center"
       action="/api/category"
       method="post"
     >
@@ -45,7 +45,12 @@ const CategoryForm: React.FC<CategoryFormProps> = ({ categories }) => {
       >
         <option value={0}>Root Level</option>
         {categories.map(({ title, id }) => (
-          <option value={id}>{title}</option>
+          <option
+            key={id}
+            value={id}
+          >
+            {title}
+          </option>
         ))}
       </select>
       <button className="btn btn-primary">Submit</button>
