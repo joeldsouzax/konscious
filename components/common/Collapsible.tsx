@@ -14,17 +14,17 @@ const Accordion: React.FC<AccordionProps> = ({
 }) => {
   const [collapse, setCollapse] = React.useState(isOpen);
   return (
-    <div className="collapse collapse-arrow  bg-base-200">
+    <div className="collapse collapse-arrow bg-base-200">
       <input
         type="checkbox"
         className="peer"
         checked={collapse}
         onChange={() => setCollapse((prev) => !prev)}
       />
-      <div className="collapse-title bg-primary text-primary-content peer-checked:bg-secondary peer-checked:text-secondary-content">
+      <div className="collapse-title text-primary-content peer-checked:text-secondary-content">
         {label}
       </div>
-      <div className="collapse-content bg-primary text-primary-content peer-checked:bg-secondary peer-checked:text-secondary-content">
+      <div className="collapse-content text-primary-content peer-checked:text-secondary-content">
         {children}
       </div>
     </div>
