@@ -2,8 +2,8 @@
 
 import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
 import { cookies } from "next/headers";
-import { NextPage } from "next";
 import { Database } from "@/types";
+import { NextPage } from "next";
 import { getCategories, getUserRole } from "./action";
 import {
   CreateCategory,

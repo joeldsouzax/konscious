@@ -16,30 +16,13 @@ export async function deleteEvent(id: number) {
 }
 
 export const getEvents = async (supabase: SupabaseClient<Database>) => {
-  const {
-    data: { user },
-    error: userError,
-  } = await supabase.auth.getUser();
-  if (user && user.app_metadata.role === "admin") {
-    const { data, error } = await supabase
-      .from("category")
-      .select()
-      .order("created_at", { ascending: true });
-
-    if (error) {
-      return [];
-    }
-    return data ?? [];
-  }
   const { data, error } = await supabase
-    .from("category")
+    .from("event")
     .select()
-    .is("parent_id", null)
     .order("created_at", { ascending: true });
 
   if (error) {
     return [];
   }
-
   return data ?? [];
 };
