@@ -16,6 +16,19 @@ export async function POST(request: Request) {
   const date = String(formData.get("date"));
   const time = String(formData.get("time"));
 
+  const now = new Date();
+  const eventDate = new Date(date);
+
+  if (eventDate < now) {
+    return NextResponse.redirect(
+      `${requestUrl.origin}?error=event date is in the past`,
+      {
+        // a 301 status is required to redirect from a POST to a GET route
+        status: 301,
+      }
+    );
+  }
+
   const { error } = await supabase
     .from("event")
     .insert([
@@ -31,7 +44,7 @@ export async function POST(request: Request) {
 
   if (error) {
     return NextResponse.redirect(
-      `${requestUrl.origin}/events?error=Could not create the event`,
+      `${requestUrl.origin}?error=Could not create the event`,
       {
         // a 301 status is required to redirect from a POST to a GET route
         status: 301,
