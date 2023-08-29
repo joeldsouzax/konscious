@@ -40,6 +40,23 @@ const CategoryForm: React.FC<CategoryFormProps> = ({ categories }) => {
           />
         </label>
       </div>
+      <div className="flex flex-row justify-between gap-2">
+        <input
+          required
+          type="date"
+          id="date"
+          name="date"
+          pattern="\d{4}-\d{2}-\d{2}"
+          className="input input-bordered input-primary w-full"
+        />
+        <input
+          type="time"
+          id="time"
+          name="time"
+          className="input input-bordered input-primary w-full"
+          required
+        />
+      </div>
       <button className="btn btn-primary">Submit</button>
     </form>
   );

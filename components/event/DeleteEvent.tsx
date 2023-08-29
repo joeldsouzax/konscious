@@ -1,22 +1,22 @@
 "use client";
-import { deleteCategory } from "@/app/(site)/category/action";
+import { deleteEvent } from "@/app/(site)/action";
 import { useTransition } from "react";
 import * as React from "react";
 import { AiFillDelete } from "react-icons/ai";
 import { MdAutoDelete } from "react-icons/md";
 
-interface DeleteCategoryProps {
+interface DeleteEventProps {
   id: number;
 }
 
-const DeleteCategory: React.FC<DeleteCategoryProps> = ({ id }) => {
+const DeleteEvent: React.FC<DeleteEventProps> = ({ id }) => {
   let [isPending, startTransition] = useTransition();
 
   return (
-    <button onClick={() => startTransition(() => deleteCategory(id))}>
+    <button onClick={() => startTransition(() => deleteEvent(id))}>
       {isPending ? <MdAutoDelete /> : <AiFillDelete />}
     </button>
   );
 };
 
-export default DeleteCategory;
+export default DeleteEvent;

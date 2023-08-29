@@ -13,23 +13,25 @@ export async function POST(request: Request) {
   const title = String(formData.get("title"));
   const description = String(formData.get("description"));
   const isMember = Boolean(formData.get("is_member"));
-  const parentID = Number(formData.get("parent_id"));
+  const date = String(formData.get("date"));
+  const time = String(formData.get("time"));
 
   const { error } = await supabase
-    .from("category")
+    .from("event")
     .insert([
       {
         title,
         description,
         is_member: isMember,
-        parent_id: parentID === 0 ? null : parentID,
+        date,
+        time,
       },
     ])
     .select();
 
   if (error) {
     return NextResponse.redirect(
-      `${requestUrl.origin}?error=Could not create a category`,
+      `${requestUrl.origin}/events?error=Could not create the event`,
       {
         // a 301 status is required to redirect from a POST to a GET route
         status: 301,

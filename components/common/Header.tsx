@@ -5,7 +5,7 @@ import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import { BsCalendarRange, BsChevronDown } from "react-icons/bs";
 import { IoQrCodeOutline } from "react-icons/io5";
-import { BiSolidUserAccount, BiLogInCircle } from "react-icons/bi";
+import { BiSolidUserAccount, BiLogInCircle, BiCategory } from "react-icons/bi";
 
 import Link from "next/link";
 import { getUserRole } from "@/app/(site)/action";
@@ -76,9 +76,9 @@ const Header: React.FC = async () => {
             )}
             {role === "ADMIN" && (
               <li>
-                <Link href="/events">
-                  <BsCalendarRange />
-                  Events Management
+                <Link href="/category">
+                  <BiCategory />
+                  Category Management
                 </Link>
               </li>
             )}

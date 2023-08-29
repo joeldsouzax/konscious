@@ -1,14 +1,14 @@
 import { Tables } from "@/types";
 import * as React from "react";
-import DeleteCategory from "./DeleteCategory";
+import DeleteEvent from "./DeleteEvent";
 import { twMerge } from "tailwind-merge";
 
-interface ListCategoriesProps {
-  categories: Array<Tables<"category">>;
+interface ListEventsProps {
+  events: Array<Tables<"event">>;
 }
 
-const ListCategories: React.FC<ListCategoriesProps> = ({ categories }) => {
-  if (categories.length === 0) return null;
+const ListEvents: React.FC<ListEventsProps> = ({ events }) => {
+  if (events.length === 0) return null;
   return (
     <table className="table table-sm border-collapse">
       <thead>
@@ -20,30 +20,30 @@ const ListCategories: React.FC<ListCategoriesProps> = ({ categories }) => {
         </tr>
       </thead>
       <tbody>
-        {categories.map((category) => (
-          <tr key={category.id}>
+        {events.map(({ is_member, time, date, title, description, id }) => (
+          <tr key={id}>
             <td className="max-w-[160px] truncate text-ellipsis overflow-hidden">
               <div className="font-bold truncate text-ellipsis overflow-hidden">
-                {category.title}
+                {title}
               </div>
             </td>
             <td className="max-w-[160px] truncate text-ellipsis overflow-hidden">
-              {category.description}
+              {description}
             </td>
             <td className="max-w-[160px] truncate text-ellipsis overflow-hidden">
               <div
                 className={twMerge(
                   "badge",
-                  category.is_member ? "badge-success" : "badge-error"
+                  is_member ? "badge-success" : "badge-error"
                 )}
               >
-                {category.is_member ? "YES" : "NO"}
+                {is_member ? "YES" : "NO"}
               </div>
             </td>
             <td>
               <ul className="menu menu-horizontal bg-base-200 rounded-box">
                 <li>
-                  <DeleteCategory id={category.id} />
+                  <DeleteEvent id={id} />
                 </li>
               </ul>
             </td>
@@ -54,4 +54,4 @@ const ListCategories: React.FC<ListCategoriesProps> = ({ categories }) => {
   );
 };
 
-export default ListCategories;
+export default ListEvents;

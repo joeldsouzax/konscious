@@ -45,27 +45,36 @@ export interface Database {
       }
       event: {
         Row: {
+          address: string | null
           created_at: string
           date: string | null
           description: string | null
           id: number
-          member_only: boolean | null
+          image: string | null
+          is_member: boolean | null
+          time: string | null
           title: string | null
         }
         Insert: {
+          address?: string | null
           created_at?: string
           date?: string | null
           description?: string | null
           id?: number
-          member_only?: boolean | null
+          image?: string | null
+          is_member?: boolean | null
+          time?: string | null
           title?: string | null
         }
         Update: {
+          address?: string | null
           created_at?: string
           date?: string | null
           description?: string | null
           id?: number
-          member_only?: boolean | null
+          image?: string | null
+          is_member?: boolean | null
+          time?: string | null
           title?: string | null
         }
         Relationships: []
@@ -108,7 +117,6 @@ export interface Database {
           id: string
           updated_at: string | null
           username: string | null
-          website: string | null
         }
         Insert: {
           avatar_url?: string | null
@@ -116,7 +124,6 @@ export interface Database {
           id: string
           updated_at?: string | null
           username?: string | null
-          website?: string | null
         }
         Update: {
           avatar_url?: string | null
@@ -124,7 +131,6 @@ export interface Database {
           id?: string
           updated_at?: string | null
           username?: string | null
-          website?: string | null
         }
         Relationships: [
           {
