@@ -50,7 +50,6 @@ Please file feedback and issues over on the [Supabase GitHub org](https://github
 
 
 ## MAJOR TASKS
-- upload image to supabase
 - geo location data update to supabase and render on app
 - validate end time and start time
 - show events in a really good way // calendar view or whatever

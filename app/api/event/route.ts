@@ -37,6 +37,10 @@ export async function POST(request: Request) {
     .from("event")
     .upload(imageFile.name, imageFile, { upsert: true });
 
+  const { data: uploadedData } = await supabase.storage
+    .from("event")
+    .getPublicUrl(imageFile.name);
+
   if (uploadError || data === null) {
     return NextResponse.redirect(
       `${requestUrl.origin}?error=problem with event image upload`,
@@ -57,7 +61,7 @@ export async function POST(request: Request) {
         date,
         ends_at,
         starts_at,
-        image: data.path,
+        image: uploadedData.publicUrl,
       },
     ])
     .select();

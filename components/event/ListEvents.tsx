@@ -26,6 +26,7 @@ const ListEvents: React.FC<ListEventsProps> = ({ events }) => {
     <table className="table table-sm border-collapse">
       <thead>
         <tr>
+          <th>Image</th>
           <th>Title</th>
           <th>Description</th>
           <th>Date</th>
@@ -37,8 +38,27 @@ const ListEvents: React.FC<ListEventsProps> = ({ events }) => {
       </thead>
       <tbody>
         {events.map(
-          ({ is_member, starts_at, ends_at, date, title, description, id }) => (
+          ({
+            is_member,
+            starts_at,
+            ends_at,
+            date,
+            title,
+            description,
+            id,
+            image,
+          }) => (
             <tr key={id}>
+              <td className="max-w-[160px] truncate text-ellipsis overflow-hidden">
+                <div className="avatar">
+                  <div className="mask mask-squircle w-12 h-12">
+                    <img
+                      src={image!}
+                      alt={title ?? "Event Image"}
+                    />
+                  </div>
+                </div>
+              </td>
               <td className="max-w-[160px] truncate text-ellipsis overflow-hidden">
                 <div className="font-bold truncate text-ellipsis overflow-hidden">
                   {title}
