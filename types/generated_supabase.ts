@@ -52,6 +52,7 @@ export interface Database {
           id: number
           image: string | null
           is_member: boolean | null
+          link: string | null
           starts_at: string | null
           title: string | null
         }
@@ -63,6 +64,7 @@ export interface Database {
           id?: number
           image?: string | null
           is_member?: boolean | null
+          link?: string | null
           starts_at?: string | null
           title?: string | null
         }
@@ -74,6 +76,7 @@ export interface Database {
           id?: number
           image?: string | null
           is_member?: boolean | null
+          link?: string | null
           starts_at?: string | null
           title?: string | null
         }

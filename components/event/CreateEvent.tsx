@@ -15,6 +15,7 @@ const CategoryForm: React.FC<CategoryFormProps> = ({ categories }) => {
       className="flex flex-col gap-4"
       action="/api/event"
       method="post"
+      encType="multipart/form-data"
     >
       <input
         type="text"

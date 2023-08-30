@@ -16,7 +16,7 @@ export async function POST(request: Request) {
   const date = String(formData.get("date"));
   const ends_at = String(formData.get("ends_at"));
   const starts_at = String(formData.get("starts_at"));
-  const imageFile = formData.get("event_image");
+  const imageFile: Blob = formData.get("event_image") as Blob;
 
   const now = new Date();
   const eventDate = new Date(date);
@@ -32,7 +32,20 @@ export async function POST(request: Request) {
   }
 
   // TODO: validate end time is not lesser than start time
-  // TODO: upload events image
+
+  const { data, error: uploadError } = await supabase.storage
+    .from("event")
+    .upload(imageFile.name, imageFile, { upsert: true });
+
+  if (uploadError || data === null) {
+    return NextResponse.redirect(
+      `${requestUrl.origin}?error=problem with event image upload`,
+      {
+        // a 301 status is required to redirect from a POST to a GET route
+        status: 301,
+      }
+    );
+  }
 
   const { error } = await supabase
     .from("event")
@@ -44,6 +57,7 @@ export async function POST(request: Request) {
         date,
         ends_at,
         starts_at,
+        image: data.path,
       },
     ])
     .select();
