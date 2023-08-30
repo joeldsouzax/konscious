@@ -27,7 +27,7 @@ const Events: NextPage = async () => {
       {["ADMIN", "MANAGER"].includes(role) && (
         <>
           <ListEvents events={events} />
-          <div className="divider"></div>
+          {events.length > 0 && <div className="divider"></div>}
         </>
       )}
       {["MEMBER", "ANON"].includes(role) && (
