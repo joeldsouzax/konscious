@@ -46,3 +46,23 @@ Please file feedback and issues over on the [Supabase GitHub org](https://github
 - [Cookie-based Auth and the Next.js 13 App Router (free course)](https://youtube.com/playlist?list=PL5S4mPUpp4OtMhpnp93EFSo42iQ40XjbF)
 - [Supabase Auth and the Next.js App Router](https://github.com/supabase/supabase/tree/master/examples/auth/nextjs)
 - [Next.js Auth Helpers Docs](https://supabase.com/docs/guides/auth/auth-helpers/nextjs)
+
+
+
+## MAJOR TASKS
+- upload image to supabase
+- geo location data update to supabase and render on app
+- validate end time and start time
+- show events in a really good way // calendar view or whatever
+
+# user management
+- ask frist name, last name when signing up
+- prompt to upload their image
+- generate QR code for the members
+
+# user session tracking
+- scan qr code by managers
+# app navigation
+- add events to categories
+- internationalize
+

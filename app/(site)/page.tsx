@@ -9,6 +9,7 @@ const Events: NextPage = async () => {
   const supabase = createServerComponentClient<Database>({ cookies });
   const role = await getUserRole(supabase);
   const events = await getEvents(supabase);
+
   return (
     <div className="flex flex-col gap-4 mx-auto">
       {role === "ADMIN" && (
@@ -28,6 +29,24 @@ const Events: NextPage = async () => {
           <ListEvents events={events} />
           <div className="divider"></div>
         </>
+      )}
+      {["MEMBER", "ANON"].includes(role) && (
+        <div className="flex flex-row justify-center items-center flex-wrap gap-6 lg:gap-4">
+          {events.map(({ id, title, description }) => (
+            <div
+              key={id}
+              className="card lg:w-96 w-full bg-secondary text-primary-content"
+            >
+              <div className="card-body">
+                <h2 className="card-title">{title}</h2>
+                <p>{description}</p>
+                <div className="card-actions justify-end">
+                  <button className="btn">Buy Now</button>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
       )}
     </div>
   );

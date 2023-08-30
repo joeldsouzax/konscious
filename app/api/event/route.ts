@@ -14,7 +14,9 @@ export async function POST(request: Request) {
   const description = String(formData.get("description"));
   const isMember = Boolean(formData.get("is_member"));
   const date = String(formData.get("date"));
-  const time = String(formData.get("time"));
+  const ends_at = String(formData.get("ends_at"));
+  const starts_at = String(formData.get("starts_at"));
+  const imageFile = formData.get("event_image");
 
   const now = new Date();
   const eventDate = new Date(date);
@@ -29,6 +31,9 @@ export async function POST(request: Request) {
     );
   }
 
+  // TODO: validate end time is not lesser than start time
+  // TODO: upload events image
+
   const { error } = await supabase
     .from("event")
     .insert([
@@ -37,7 +42,8 @@ export async function POST(request: Request) {
         description,
         is_member: isMember,
         date,
-        time,
+        ends_at,
+        starts_at,
       },
     ])
     .select();

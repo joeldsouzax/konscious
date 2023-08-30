@@ -45,36 +45,36 @@ export interface Database {
       }
       event: {
         Row: {
-          address: string | null
           created_at: string
           date: string | null
           description: string | null
+          ends_at: string | null
           id: number
           image: string | null
           is_member: boolean | null
-          time: string | null
+          starts_at: string | null
           title: string | null
         }
         Insert: {
-          address?: string | null
           created_at?: string
           date?: string | null
           description?: string | null
+          ends_at?: string | null
           id?: number
           image?: string | null
           is_member?: boolean | null
-          time?: string | null
+          starts_at?: string | null
           title?: string | null
         }
         Update: {
-          address?: string | null
           created_at?: string
           date?: string | null
           description?: string | null
+          ends_at?: string | null
           id?: number
           image?: string | null
           is_member?: boolean | null
-          time?: string | null
+          starts_at?: string | null
           title?: string | null
         }
         Relationships: []

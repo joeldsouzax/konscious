@@ -2,11 +2,7 @@
 import { Database } from "@/types";
 import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
 import { cookies } from "next/headers";
-import { redirect } from "next/navigation";
-import { BsCalendarRange, BsChevronDown } from "react-icons/bs";
-import { IoQrCodeOutline } from "react-icons/io5";
-import { BiSolidUserAccount, BiLogInCircle, BiCategory } from "react-icons/bi";
-
+import { BiSolidUserAccount, BiCategory, BiHome } from "react-icons/bi";
 import Link from "next/link";
 import { getUserRole } from "@/app/(site)/action";
 
@@ -18,67 +14,24 @@ const Header: React.FC = async () => {
     <div className="navbar bg-base-200">
       <header className="navbar container">
         <div className="navbar-start">
-          <div className="dropdown">
-            <label
-              tabIndex={0}
-              className="btn btn-ghost lg:hidden"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-5 w-5"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M4 6h16M4 12h8m-8 6h16"
-                />
-              </svg>
-            </label>
-            <ul
-              tabIndex={0}
-              className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
-            >
-              <li>
-                <Link href="/scan">
-                  <IoQrCodeOutline />
-                  Open QR Code
-                </Link>
-              </li>
-              <li>
-                <Link href="/calendar">
-                  <BsCalendarRange />
-                  Events Calendar
-                </Link>
-              </li>
-            </ul>
-          </div>
-          <Link
-            href="/"
-            role="button"
-            className="btn btn-ghost normal-case text-xl"
-          >
-            Konscious.no
-          </Link>
-        </div>
-        <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">
-            {role === "MEMBER" && (
-              <li>
-                <Link href="/scan">
-                  <IoQrCodeOutline />
-                  Open QR Code
-                </Link>
-              </li>
-            )}
+            <li>
+              <Link
+                href="/"
+                role="button"
+                className="btn btn-ghost normal-case text-xl"
+              >
+                <BiHome />
+              </Link>
+            </li>
             {role === "ADMIN" && (
               <li>
-                <Link href="/category">
+                <Link
+                  href="/category"
+                  role="button"
+                  className="btn btn-ghost normal-case text-xl"
+                >
                   <BiCategory />
-                  Category Management
                 </Link>
               </li>
             )}

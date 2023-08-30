@@ -7,12 +7,12 @@ interface CategoryFormProps {
 }
 
 // TODO: add event image updload
-// TODO: add event date time mechanism
-// TODO: connect event to a category
+// TODO: add address capability
+// TODO: add geolocatio capability
 const CategoryForm: React.FC<CategoryFormProps> = ({ categories }) => {
   return (
     <form
-      className="flex flex-col max-w-md mx-auto gap-4 justify-center"
+      className="flex flex-col gap-4"
       action="/api/event"
       method="post"
     >
@@ -30,34 +30,75 @@ const CategoryForm: React.FC<CategoryFormProps> = ({ categories }) => {
         required
         placeholder="Description"
       ></textarea>
-      <div className="form-control">
-        <label className="label cursor-pointer">
-          <span className="label-text">Member Only?</span>
+      <div className="flex flex-row gap-2 items-center">
+        <div className="form-control w-full">
+          <label className="label cursor-pointer">
+            <span className="label-text">Member Only?</span>
+            <input
+              name="is_member"
+              type="checkbox"
+              className="toggle"
+            />
+          </label>
+        </div>
+        <div className="form-control w-full">
+          <label
+            htmlFor="date"
+            className="label-text"
+          >
+            Event Date
+          </label>
           <input
-            name="is_member"
-            type="checkbox"
-            className="toggle"
+            required
+            type="date"
+            id="date"
+            name="date"
+            pattern="\d{4}-\d{2}-\d{2}"
+            className="input input-bordered input-primary w-full"
           />
-        </label>
+        </div>
       </div>
-      <div className="flex flex-row justify-between gap-2">
-        <input
-          required
-          type="date"
-          id="date"
-          name="date"
-          pattern="\d{4}-\d{2}-\d{2}"
-          className="input input-bordered input-primary w-full"
-        />
-        <input
-          type="time"
-          id="time"
-          name="time"
-          className="input input-bordered input-primary w-full"
-          required
-        />
+      <div className="flex flex-row gap-2 items-center">
+        <div className="form-control w-full">
+          <label
+            htmlFor="starts_at"
+            className="label-text"
+          >
+            Event Start Time
+          </label>
+          <input
+            type="time"
+            id="starts_at"
+            name="starts_at"
+            className="input input-bordered input-primary w-full"
+            required
+          />
+        </div>
+        <div className="form-control w-full">
+          <label
+            htmlFor="ends_at"
+            className="label-text"
+          >
+            Event End Time
+          </label>
+          <input
+            type="time"
+            id="ends_at"
+            name="ends_at"
+            className="input input-bordered input-primary w-full"
+            required
+          />
+        </div>
       </div>
-      <button className="btn btn-primary">Submit</button>
+      <input
+        type="file"
+        required
+        name="event_image"
+        className="file-input file-input-bordered file-input-lg file-input-secondary w-full"
+      />
+      <div className="self-center max-w-md w-full">
+        <button className="btn btn-primary w-full">Submit</button>
+      </div>
     </form>
   );
 };
