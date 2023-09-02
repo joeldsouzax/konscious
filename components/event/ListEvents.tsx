@@ -2,6 +2,8 @@ import { Tables } from "@/types";
 import * as React from "react";
 import DeleteEvent from "./DeleteEvent";
 import { twMerge } from "tailwind-merge";
+import Link from "next/link";
+import { AiFillEye } from "react-icons/ai";
 
 interface ListEventsProps {
   events: Array<Tables<"event">>;
@@ -64,9 +66,12 @@ const ListEvents: React.FC<ListEventsProps> = ({ events }) => {
                 </div>
               </td>
               <td className="max-w-[160px] truncate text-ellipsis overflow-hidden">
-                <div className="font-bold truncate text-ellipsis overflow-hidden">
+                <Link
+                  href={"/" + id}
+                  className="font-bold truncate text-ellipsis overflow-hidden"
+                >
                   {title}
-                </div>
+                </Link>
               </td>
               <td className="max-w-[160px] truncate text-ellipsis overflow-hidden">
                 {description}
@@ -102,6 +107,11 @@ const ListEvents: React.FC<ListEventsProps> = ({ events }) => {
                 <ul className="menu menu-horizontal bg-base-200 rounded-box">
                   <li>
                     <DeleteEvent id={id} />
+                  </li>
+                  <li>
+                    <Link href={"/" + id}>
+                      <AiFillEye />
+                    </Link>
                   </li>
                 </ul>
               </td>
