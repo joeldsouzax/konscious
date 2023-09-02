@@ -51,17 +51,19 @@ Please file feedback and issues over on the [Supabase GitHub org](https://github
 
 ## MAJOR TASKS
 - geo location data update to supabase and render on app
-- validate end time and start time
-- show events in a really good way // calendar view or whatever
-
-# user management
+- show events in a really good way (calendar view or whatever)
+- clean up login
 - ask frist name, last name when signing up
 - prompt to upload their image
-- generate QR code for the members
-
-# user session tracking
+- generate QR code for the members using userid and time (dynamic)
 - scan qr code by managers
-# app navigation
 - add events to categories
 - internationalize
 
+# good to do
+- validate end time and start time
+- validate that qr code scanning for a particular event happens within n hours before the event
+- validate qr code was generate n mins before scanning
+- possibly validate that the user is also in the same location
+- error pages
+- show which user went to which event on ui for admins

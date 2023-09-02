@@ -32,6 +32,8 @@ const ListEvents: React.FC<ListEventsProps> = ({ events }) => {
           <th>Date</th>
           <th>Starts At</th>
           <th>Ends At</th>
+          <th>Latitude</th>
+          <th>Longitude</th>
           <th>Member?</th>
           <th>Actions</th>
         </tr>
@@ -47,6 +49,8 @@ const ListEvents: React.FC<ListEventsProps> = ({ events }) => {
             description,
             id,
             image,
+            lat,
+            long,
           }) => (
             <tr key={id}>
               <td className="max-w-[160px] truncate text-ellipsis overflow-hidden">
@@ -77,6 +81,12 @@ const ListEvents: React.FC<ListEventsProps> = ({ events }) => {
               </td>
               <td className="max-w-[160px] truncate text-ellipsis overflow-hidden">
                 {parseTime(ends_at!)}
+              </td>
+              <td className="max-w-[160px] truncate text-ellipsis overflow-hidden">
+                {lat}
+              </td>
+              <td className="max-w-[160px] truncate text-ellipsis overflow-hidden">
+                {long}
               </td>
               <td className="max-w-[160px] truncate text-ellipsis overflow-hidden">
                 <div

@@ -17,6 +17,8 @@ export async function POST(request: Request) {
   const ends_at = String(formData.get("ends_at"));
   const starts_at = String(formData.get("starts_at"));
   const imageFile: Blob = formData.get("event_image") as Blob;
+  const lat = Number(formData.get("latitude"));
+  const long = Number(formData.get("longitude"));
 
   const now = new Date();
   const eventDate = new Date(date);
@@ -32,6 +34,7 @@ export async function POST(request: Request) {
   }
 
   // TODO: validate end time is not lesser than start time
+  // TODO: validate that lat and long is number
 
   const { data, error: uploadError } = await supabase.storage
     .from("event")
@@ -62,6 +65,8 @@ export async function POST(request: Request) {
         ends_at,
         starts_at,
         image: uploadedData.publicUrl,
+        lat,
+        long,
       },
     ])
     .select();

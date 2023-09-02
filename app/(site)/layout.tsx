@@ -27,7 +27,7 @@ export default function RootLayout({
         <main
           id="content"
           role="main"
-          className="container px-2 mt-10 max-w-4xl"
+          className="container px-2 mt-10 max-w-6xl"
         >
           {children}
         </main>

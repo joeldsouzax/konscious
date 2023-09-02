@@ -23,7 +23,7 @@ const CategoryForm: React.FC<CategoryFormProps> = ({ categories }) => {
         name="title"
         required
         maxLength={160}
-        className="input input-bordered input-primary w-full"
+        className="input input-bordered input-primary w-full input-lg"
       />
       <textarea
         className="textarea textarea-primary textarea-lg"
@@ -31,6 +31,45 @@ const CategoryForm: React.FC<CategoryFormProps> = ({ categories }) => {
         required
         placeholder="Description"
       ></textarea>
+      <input
+        type="file"
+        required
+        name="event_image"
+        className="file-input file-input-bordered file-input-lg file-input-secondary w-full"
+      />
+      <div className="flex flex-row gap-2 items-center">
+        <input
+          required
+          id="latitude"
+          name="latitude"
+          placeholder="Latitude"
+          className="input input-bordered input-primary w-full input-lg"
+        />
+        <input
+          required
+          id="longitude"
+          name="longitude"
+          placeholder="Longitude"
+          className="input input-bordered input-primary w-full input-lg"
+        />
+      </div>
+      <div className="flex flex-col gap-2">
+        <input
+          type="text"
+          placeholder="Address 1"
+          name="address1"
+          required
+          maxLength={160}
+          className="input input-bordered input-primary w-full"
+        />
+        <input
+          type="text"
+          placeholder="Address 2"
+          name="address2"
+          maxLength={160}
+          className="input input-bordered input-primary w-full"
+        />
+      </div>
       <div className="flex flex-row gap-2 items-center">
         <div className="form-control w-full">
           <label className="label cursor-pointer">
@@ -91,12 +130,6 @@ const CategoryForm: React.FC<CategoryFormProps> = ({ categories }) => {
           />
         </div>
       </div>
-      <input
-        type="file"
-        required
-        name="event_image"
-        className="file-input file-input-bordered file-input-lg file-input-secondary w-full"
-      />
       <div className="self-center max-w-md w-full">
         <button className="btn btn-primary w-full">Submit</button>
       </div>
