@@ -1,17 +1,39 @@
-import { AddressMap } from "@/components";
+import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
+import { cookies } from "next/headers";
+import { Database } from "@/types";
 import { NextPage } from "next";
+import { getEvent } from "./action";
+import { redirect } from "next/navigation";
+import Image from "next/image";
 
 interface EventPageProps {
   params: { id: string };
 }
 
 const EventPage: NextPage<EventPageProps> = async ({ params }) => {
-  console.log(params);
+  const supabase = createServerComponentClient<Database>({ cookies });
+  const data = await getEvent(supabase, params.id);
+
+  // return to home page when that event does not exist
+  if (!data) redirect("/");
+
   return (
-    <AddressMap
-      lat={0}
-      long={0}
-    />
+    <section className="flex flex-col lg:flex-row lg:justify-between lg:items-start gap-4 px-4 lg:px-0">
+      <article className="prose">
+        <h1>{data.title}</h1>
+        <p>{data.description}</p>
+        <h3>{data.date}</h3>
+        <h3>{data.starts_at}</h3>
+        <h3>{data.ends_at}</h3>
+      </article>
+      <div className="relative aspect-video min-w-[400px]">
+        <Image
+          src={data.image!}
+          alt="event-image"
+          layout="fill"
+        />
+      </div>
+    </section>
   );
 };
 

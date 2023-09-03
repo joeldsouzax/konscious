@@ -1,8 +1,6 @@
 /** @format */
 
-import Link from "next/link";
-import Messages from "./messages";
-import { BsChevronLeft } from "react-icons/bs";
+import { Messages } from "@/components";
 
 export default function Login() {
   return (
