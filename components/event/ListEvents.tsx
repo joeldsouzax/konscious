@@ -4,22 +4,10 @@ import DeleteEvent from "./DeleteEvent";
 import { twMerge } from "tailwind-merge";
 import Link from "next/link";
 import { AiFillEye } from "react-icons/ai";
+import { DateTime } from "luxon";
 
 interface ListEventsProps {
   events: Array<Tables<"event">>;
-}
-
-function parseTime(time: string) {
-  let timeInt = parseInt(time);
-  let minutes = time.substring(3, 5);
-
-  // you could then add or subtract time here as needed
-
-  if (time > "12:00") {
-    return `${timeInt - 12}:${minutes} PM`;
-  } else {
-    return `${timeInt}:${minutes} AM`;
-  }
 }
 
 const ListEvents: React.FC<ListEventsProps> = ({ events }) => {
@@ -31,7 +19,6 @@ const ListEvents: React.FC<ListEventsProps> = ({ events }) => {
           <th>Image</th>
           <th>Title</th>
           <th>Description</th>
-          <th>Date</th>
           <th>Starts At</th>
           <th>Ends At</th>
           <th>Latitude</th>
@@ -44,9 +31,8 @@ const ListEvents: React.FC<ListEventsProps> = ({ events }) => {
         {events.map(
           ({
             is_member,
-            starts_at,
-            ends_at,
-            date,
+            event_start,
+            event_end,
             title,
             description,
             id,
@@ -76,16 +62,16 @@ const ListEvents: React.FC<ListEventsProps> = ({ events }) => {
               <td className="max-w-[160px] truncate text-ellipsis overflow-hidden">
                 {description}
               </td>
+
               <td className="max-w-[160px] truncate text-ellipsis overflow-hidden">
-                {new Date(date!).toDateString()}
+                {DateTime.fromISO(event_start!)
+                  .setLocale("tr")
+                  .toLocaleString(DateTime.DATETIME_FULL)}
               </td>
               <td className="max-w-[160px] truncate text-ellipsis overflow-hidden">
-                <time dateTime={parseTime(starts_at!)}>
-                  {parseTime(starts_at!)}
-                </time>
-              </td>
-              <td className="max-w-[160px] truncate text-ellipsis overflow-hidden">
-                {parseTime(ends_at!)}
+                {DateTime.fromISO(event_end!)
+                  .setLocale("tr")
+                  .toLocaleString(DateTime.DATETIME_FULL)}
               </td>
               <td className="max-w-[160px] truncate text-ellipsis overflow-hidden">
                 {lat}

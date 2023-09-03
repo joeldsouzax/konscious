@@ -19,8 +19,7 @@ export const getEvents = async (supabase: SupabaseClient<Database>) => {
   const { data, error } = await supabase
     .from("event")
     .select()
-    .order("date", { ascending: true })
-    .order("starts_at", { ascending: true });
+    .order("event_start", { ascending: true });
 
   if (error) {
     return [];

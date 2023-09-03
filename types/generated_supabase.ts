@@ -47,46 +47,43 @@ export interface Database {
         Row: {
           address: Json | null
           created_at: string
-          date: string | null
           description: string | null
-          ends_at: string | null
+          event_end: string | null
+          event_start: string | null
           id: number
           image: string | null
           is_member: boolean | null
           lat: number | null
           link: string | null
           long: number | null
-          starts_at: string | null
           title: string | null
         }
         Insert: {
           address?: Json | null
           created_at?: string
-          date?: string | null
           description?: string | null
-          ends_at?: string | null
+          event_end?: string | null
+          event_start?: string | null
           id?: number
           image?: string | null
           is_member?: boolean | null
           lat?: number | null
           link?: string | null
           long?: number | null
-          starts_at?: string | null
           title?: string | null
         }
         Update: {
           address?: Json | null
           created_at?: string
-          date?: string | null
           description?: string | null
-          ends_at?: string | null
+          event_end?: string | null
+          event_start?: string | null
           id?: number
           image?: string | null
           is_member?: boolean | null
           lat?: number | null
           link?: string | null
           long?: number | null
-          starts_at?: string | null
           title?: string | null
         }
         Relationships: []

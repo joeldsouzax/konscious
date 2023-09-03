@@ -72,63 +72,45 @@ const CategoryForm: React.FC<CategoryFormProps> = ({ categories }) => {
       </div>
       <div className="flex flex-row gap-2 items-center">
         <div className="form-control w-full">
-          <label className="label cursor-pointer">
-            <span className="label-text">Member Only?</span>
-            <input
-              name="is_member"
-              type="checkbox"
-              className="toggle"
-            />
-          </label>
-        </div>
-        <div className="form-control w-full">
-          <label
-            htmlFor="date"
-            className="label-text"
-          >
-            Event Date
-          </label>
-          <input
-            required
-            type="date"
-            id="date"
-            name="date"
-            pattern="\d{4}-\d{2}-\d{2}"
-            className="input input-bordered input-primary w-full"
-          />
-        </div>
-      </div>
-      <div className="flex flex-row gap-2 items-center">
-        <div className="form-control w-full">
           <label
             htmlFor="starts_at"
-            className="label-text"
+            className="event-start"
           >
             Event Start Time
           </label>
           <input
-            type="time"
-            id="starts_at"
-            name="starts_at"
+            type="datetime-local"
+            id="event-start"
+            name="event-start"
             className="input input-bordered input-primary w-full"
             required
           />
         </div>
         <div className="form-control w-full">
           <label
-            htmlFor="ends_at"
-            className="label-text"
+            htmlFor="starts_at"
+            className="event-end"
           >
             Event End Time
           </label>
           <input
-            type="time"
-            id="ends_at"
-            name="ends_at"
+            type="datetime-local"
+            id="event-end"
+            name="event-end"
             className="input input-bordered input-primary w-full"
             required
           />
         </div>
+      </div>
+      <div className="form-control w-full">
+        <label className="label cursor-pointer">
+          <span className="label-text">Member Only?</span>
+          <input
+            name="is_member"
+            type="checkbox"
+            className="toggle"
+          />
+        </label>
       </div>
       <div className="self-center max-w-md w-full">
         <button className="btn btn-primary w-full">Submit</button>

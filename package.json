@@ -10,6 +10,7 @@
     "@supabase/auth-helpers-nextjs": "latest",
     "@supabase/supabase-js": "latest",
     "autoprefixer": "10.4.14",
+    "luxon": "^3.4.2",
     "mapbox-gl": "^2.15.0",
     "next": "latest",
     "postcss": "8.4.24",
@@ -24,6 +25,7 @@
   },
   "devDependencies": {
     "@tailwindcss/typography": "^0.5.9",
+    "@types/luxon": "^3.3.2",
     "@types/node": "20.3.1",
     "@types/react": "18.2.12",
     "@types/react-dom": "18.2.5",
