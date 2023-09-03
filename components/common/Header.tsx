@@ -2,7 +2,7 @@
 import { Database } from "@/types";
 import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
 import { cookies } from "next/headers";
-import { BiSolidUserAccount, BiCategory, BiHome } from "react-icons/bi";
+import { BiSolidUserAccount, BiCategory, BiHome, BiUser } from "react-icons/bi";
 import Link from "next/link";
 import { getUserRole } from "@/app/(site)/action";
 
@@ -25,15 +25,26 @@ const Header: React.FC = async () => {
               </Link>
             </li>
             {role === "ADMIN" && (
-              <li>
-                <Link
-                  href="/category"
-                  role="button"
-                  className="btn btn-ghost normal-case text-xl"
-                >
-                  <BiCategory />
-                </Link>
-              </li>
+              <>
+                <li>
+                  <Link
+                    href="/category"
+                    role="button"
+                    className="btn btn-ghost normal-case text-xl"
+                  >
+                    <BiCategory />
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/user"
+                    role="button"
+                    className="btn btn-ghost normal-case text-xl"
+                  >
+                    <BiUser />
+                  </Link>
+                </li>
+              </>
             )}
           </ul>
         </div>

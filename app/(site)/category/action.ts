@@ -8,6 +8,7 @@ import {
 } from "@supabase/auth-helpers-nextjs";
 import { revalidatePath } from "next/cache";
 import { cookies } from "next/headers";
+import { getUserRole } from "../action";
 
 export async function deleteCategory(id: number) {
   const supabase = createServerComponentClient<Database>({ cookies });
@@ -16,11 +17,8 @@ export async function deleteCategory(id: number) {
 }
 
 export const getCategories = async (supabase: SupabaseClient<Database>) => {
-  const {
-    data: { user },
-    error: userError,
-  } = await supabase.auth.getUser();
-  if (user && user.app_metadata.role === "admin") {
+  const role = await getUserRole(supabase);
+  if (role === "ADMIN") {
     const { data, error } = await supabase
       .from("category")
       .select()

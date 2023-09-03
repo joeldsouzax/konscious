@@ -24,6 +24,7 @@ export default function RootLayout({
     >
       <body className={twMerge(font.className, "font-sans antialiased")}>
         <Header />
+
         <main
           id="content"
           role="main"

@@ -9,8 +9,6 @@ const Events: NextPage = async () => {
   const supabase = createServerComponentClient<Database>({ cookies });
   const role = await getUserRole(supabase);
   const events = await getEvents(supabase);
-  console.log(role);
-  console.log(events);
 
   return (
     <div className="flex flex-col gap-4 mx-auto">

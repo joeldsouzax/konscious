@@ -2,6 +2,8 @@ import { Tables } from "@/types";
 import * as React from "react";
 import DeleteCategory from "./DeleteCategory";
 import { twMerge } from "tailwind-merge";
+import { AiFillEye } from "react-icons/ai";
+import Link from "next/link";
 
 interface ListCategoriesProps {
   categories: Array<Tables<"category">>;
@@ -44,6 +46,11 @@ const ListCategories: React.FC<ListCategoriesProps> = ({ categories }) => {
               <ul className="menu menu-horizontal bg-base-200 rounded-box">
                 <li>
                   <DeleteCategory id={category.id} />
+                </li>
+                <li>
+                  <Link href={"/category/" + category.id}>
+                    <AiFillEye />
+                  </Link>
                 </li>
               </ul>
             </td>
