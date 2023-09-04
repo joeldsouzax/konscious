@@ -27,6 +27,21 @@ export const getEvents = async (supabase: SupabaseClient<Database>) => {
   return data ?? [];
 };
 
+export const getEventIdsAndTitle = async (
+  supabase: SupabaseClient<Database>
+) => {
+  const { data, error } = await supabase
+    .from("event")
+    .select("id, title, events_categories (category_id)")
+    .order("event_end");
+
+  if (error) {
+    return [];
+  }
+
+  return data ?? [];
+};
+
 export const getUserRole = async (supabase: SupabaseClient<Database>) => {
   const {
     data: { user },

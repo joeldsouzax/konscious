@@ -150,6 +150,37 @@ export interface Database {
           }
         ]
       }
+      user_events: {
+        Row: {
+          created_at: string
+          event_id: number
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          event_id: number
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          event_id?: number
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "user_events_event_id_fkey"
+            columns: ["event_id"]
+            referencedRelation: "event"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "user_events_user_id_fkey"
+            columns: ["user_id"]
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          }
+        ]
+      }
     }
     Views: {
       [_ in never]: never
