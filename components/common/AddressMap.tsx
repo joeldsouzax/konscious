@@ -28,7 +28,11 @@ const AddressMap: React.FC<AddressMapProps> = ({ lat, long }) => {
   });
 
   if (!isLoaded) {
-    return <p>Loading...</p>;
+    return (
+      <div className="text-center w-full mt-10">
+        <span className="loading loading-infinity loading-lg"></span>
+      </div>
+    );
   }
 
   return (
