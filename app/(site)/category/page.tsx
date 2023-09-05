@@ -22,7 +22,7 @@ const Index: NextPage = async () => {
   const role = await getUserRole(supabase);
 
   return (
-    <div className="flex flex-col gap-4 mx-auto">
+    <div className="container max-w-6xl mt-10 flex flex-col gap-4 mx-auto">
       {role === "ADMIN" && (
         <>
           <Collapsible

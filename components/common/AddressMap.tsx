@@ -12,10 +12,7 @@ interface AddressMapProps {
 }
 
 const AddressMap: React.FC<AddressMapProps> = ({ lat, long }) => {
-  const mapCenter = React.useMemo(
-    () => ({ lat: 27.672932021393862, lng: 85.31184012689732 }),
-    []
-  );
+  const mapCenter = React.useMemo(() => ({ lat: lat, lng: long }), []);
 
   const mapOptions = React.useMemo<google.maps.MapOptions>(
     () => ({
