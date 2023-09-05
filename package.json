@@ -7,17 +7,16 @@
     "update-types": "pnpm dlx supabase gen types typescript --project-id \"rqxsrptgvsncrqiosxdg\" > types/generated_supabase.ts"
   },
   "dependencies": {
+    "@react-google-maps/api": "^2.19.2",
     "@supabase/auth-helpers-nextjs": "latest",
     "@supabase/supabase-js": "latest",
     "autoprefixer": "10.4.14",
     "luxon": "^3.4.2",
-    "mapbox-gl": "^2.15.0",
     "next": "latest",
     "postcss": "8.4.24",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-icons": "^4.10.1",
-    "react-mapbox-gl": "^5.1.1",
     "swr": "^2.2.1",
     "tailwind-merge": "^1.14.0",
     "tailwindcss": "3.3.2",
