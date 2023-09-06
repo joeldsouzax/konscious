@@ -50,10 +50,9 @@ Please file feedback and issues over on the [Supabase GitHub org](https://github
 
 
 ## MAJOR TASKS
-- geo location data update to supabase and render on app
-- show events in a really good way (calendar view or whatever)
-- scan qr code by managers
 - user management with qr code creation
+- scan qr code by managers
+- show events in a really good way (calendar view or whatever)
 - internationalize
 
 # good to do

@@ -1,6 +1,6 @@
 import { Tables } from "@/types";
 import * as React from "react";
-import DeleteEvent from "./DeleteEvent";
+import DeleteEvent from "./DeleteUser";
 import { twMerge } from "tailwind-merge";
 import Link from "next/link";
 import { AiFillEye } from "react-icons/ai";
@@ -10,7 +10,7 @@ interface ListEventsProps {
   events: Array<Tables<"event">>;
 }
 
-const ListEvents: React.FC<ListEventsProps> = ({ events }) => {
+const ListUser: React.FC<ListEventsProps> = ({ events }) => {
   if (events.length === 0) return null;
   return (
     <table className="table table-sm border-collapse">
@@ -101,4 +101,4 @@ const ListEvents: React.FC<ListEventsProps> = ({ events }) => {
   );
 };
 
-export default ListEvents;
+export default ListUser;
