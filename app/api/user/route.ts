@@ -52,24 +52,6 @@ export async function POST(request: Request) {
 
   // TODO: generate a qrcode and store it in the bucket as png
 
-  //   const { data, error: uploadError } = await supabase.storage
-  //     .from("event")
-  //     .upload(imageFile.name, imageFile, { upsert: true });
-
-  //   const { data: uploadedData } = await supabase.storage
-  //     .from("event")
-  //     .getPublicUrl(imageFile.name);
-
-  //   if (uploadError || data === null) {
-  //     return NextResponse.redirect(
-  //       `${requestUrl.origin}?error=problem with event image upload`,
-  //       {
-  //         // a 301 status is required to redirect from a POST to a GET route
-  //         status: 301,
-  //       }
-  //     );
-  //   }
-
   return NextResponse.redirect(`${requestUrl.origin}/user`, {
     // a 301 status is required to redirect from a POST to a GET route
     status: 301,

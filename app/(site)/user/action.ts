@@ -25,10 +25,7 @@ export async function deleteUser(uuid: string) {
 }
 
 export const getUserProfiles = async (supabase: SupabaseClient<Database>) => {
-  const { data, error } = await supabase
-    .from("profiles")
-    .select()
-    .order("updated_at", { ascending: true });
+  const { data, error } = await supabase.from("profiles").select("*");
 
   if (error) {
     return [];

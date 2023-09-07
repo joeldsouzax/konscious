@@ -4,9 +4,12 @@ import { Database } from "@/types";
 import { NextPage } from "next";
 import { Collapsible, CreateUser, ListUser, Messages } from "@/components";
 import { getUserRole } from "../action";
+import { getUserProfiles } from "./action";
 
 const User: NextPage = async () => {
   const supabase = createServerComponentClient<Database>({ cookies });
+  const users = await getUserProfiles(supabase);
+
   const role = await getUserRole(supabase);
   return (
     <section className="container px-2 mt-10 max-w-6xl">
@@ -25,8 +28,8 @@ const User: NextPage = async () => {
         )}
         {["ADMIN", "MANAGER"].includes(role) && (
           <>
-            {/* <ListEvents events={events} />
-            {events.length > 0 && <div className="divider"></div>} */}
+            <ListUser users={users} />
+            {users.length > 0 && <div className="divider"></div>}
           </>
         )}
       </div>
