@@ -53,3 +53,18 @@ export const getUserRole = async (supabase: SupabaseClient<Database>) => {
   if (user) return "MEMBER";
   return "ANON";
 };
+
+export const getRootCategories = async (supabase: SupabaseClient<Database>) => {
+  const { data: categories, error } = await supabase
+    .from("category")
+    .select()
+    .is("parent_id", null);
+
+  if (error) {
+    return [];
+  }
+
+  console.log(error);
+
+  return categories ?? [];
+};

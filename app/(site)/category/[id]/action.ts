@@ -69,3 +69,6 @@ export async function addCategoryEvent(id: number, eventId: number) {
 
   revalidatePath("/category/" + id);
 }
+
+// TODO: get events of a category
+// TODO: get category of a category and so on

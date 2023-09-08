@@ -20,7 +20,7 @@ const EventPage: NextPage<EventPageProps> = async ({ params }) => {
   if (!data) redirect("/category");
 
   return (
-    <section className="flex flex-col gap-1 px-4 lg:px-0">
+    <section className="container max-w-6xl mt-10 flex flex-col gap-1 px-4 lg:px-0">
       <article className="prose">
         <h1>{data.title}</h1>
         <p>{data.description}</p>
