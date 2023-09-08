@@ -39,8 +39,6 @@ export async function POST(request: Request) {
       },
     });
 
-  console.log(userError);
-
   if (user === null || userError) {
     return NextResponse.redirect(
       `${requestUrl.origin}/user?error=Could not create the user`,
