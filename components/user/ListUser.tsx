@@ -44,7 +44,7 @@ const ListUser: React.FC<ListEventsProps> = ({ users }) => {
               <ul className="menu menu-horizontal bg-base-200 rounded-box">
                 <li></li>
                 <li>
-                  <Link href={"/" + id}>
+                  <Link href={"/user/" + id}>
                     <AiFillEye />
                   </Link>
                 </li>

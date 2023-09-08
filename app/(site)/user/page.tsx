@@ -18,7 +18,7 @@ const User: NextPage = async () => {
           <>
             <Collapsible
               label="Create User"
-              isOpen={true}
+              isOpen={!(users.length > 0)}
             >
               <CreateUser />
             </Collapsible>
