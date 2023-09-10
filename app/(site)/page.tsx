@@ -15,21 +15,20 @@ const Events: NextPage = async () => {
 
     return (
       <section className="container px-2 mt-10 max-w-6xl">
-        <div className="flex flex-row justify-center flex-wrap gap-6 lg:gap-4">
+        <div className="flex flex-row flex-wrap gap-6 lg:gap-4">
           {categories.length > 0 ? (
             categories.map(({ id, title, description, is_member }) => (
-              <Link href={"/category/" + id}>
-                <div
-                  className={twMerge(
-                    "card w-full lg:w-96 hover:shadow-2xl cursor-pointer",
-                    is_member ? "bg-primary" : "bg-secondary"
-                  )}
-                >
-                  <div className="card-body">
-                    <h2 className="card-title">{title}</h2>
-                    <p>{description}</p>
-                    <div className="card-actions justify-end"></div>
-                  </div>
+              <Link
+                href={"/category/" + id}
+                className={twMerge(
+                  "card w-full lg:w-96 hover:shadow-2xl cursor-pointer",
+                  is_member ? "bg-primary" : "bg-secondary"
+                )}
+              >
+                <div className="card-body">
+                  <h2 className="card-title">{title}</h2>
+                  <p>{description}</p>
+                  <div className="card-actions justify-end"></div>
                 </div>
               </Link>
             ))
