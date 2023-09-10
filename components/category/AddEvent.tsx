@@ -1,6 +1,6 @@
 "use client";
 
-import { addCategoryEvent } from "@/app/(site)/category/[id]/action";
+import { addCategoryEvent } from "@/app/(site)/category/[...id]/action";
 import { useTransition } from "react";
 import * as React from "react";
 import { AiOutlineLoading } from "react-icons/ai";

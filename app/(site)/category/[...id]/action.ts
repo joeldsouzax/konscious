@@ -4,6 +4,7 @@ import {
   SupabaseClient,
   createServerComponentClient,
 } from "@supabase/auth-helpers-nextjs";
+import { data } from "autoprefixer";
 import { revalidatePath } from "next/cache";
 import { cookies } from "next/headers";
 
@@ -72,3 +73,33 @@ export async function addCategoryEvent(id: number, eventId: number) {
 
 // TODO: get events of a category
 // TODO: get category of a category and so on
+
+export const getChildCategories = async (
+  supabase: SupabaseClient<Database>,
+  id: string
+) => {
+  const { data, error } = await supabase
+    .from("category")
+    .select()
+    .eq("parent_id", id);
+  if (error) {
+    return [];
+  }
+  return data ?? [];
+};
+
+export const getEventByCategory = async (
+  supabase: SupabaseClient<Database>,
+  id: string
+) => {
+  const { data: events, error } = await supabase
+    .from("events_categories")
+    .select("event (*)")
+    .eq("category_id", id);
+
+  if (error) {
+    return [];
+  }
+
+  return events ?? [];
+};

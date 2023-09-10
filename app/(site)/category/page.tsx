@@ -12,6 +12,8 @@ import {
   Collapsible,
 } from "@/components";
 import { getUserRole } from "../action";
+import { normalUsers } from "@/util";
+import { redirect } from "next/navigation";
 
 const Index: NextPage = async () => {
   const supabase = createServerComponentClient<Database>({ cookies });
@@ -20,6 +22,8 @@ const Index: NextPage = async () => {
 
   // get role of the user
   const role = await getUserRole(supabase);
+
+  if (normalUsers.includes(role)) redirect("/");
 
   return (
     <div className="container max-w-6xl mt-10 flex flex-col gap-4 mx-auto">
@@ -41,7 +45,7 @@ const Index: NextPage = async () => {
           <div className="divider"></div>
         </>
       )}
-      {["MEMBER", "ANON"].includes(role) && (
+      {/* {["MEMBER", "ANON"].includes(role) && (
         <div className="flex flex-row justify-center items-center flex-wrap gap-6 lg:gap-4">
           {categories.map(({ id, title, description }) => (
             <div
@@ -58,7 +62,7 @@ const Index: NextPage = async () => {
             </div>
           ))}
         </div>
-      )}
+      )} */}
     </div>
   );
 };

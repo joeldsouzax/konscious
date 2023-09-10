@@ -51,6 +51,7 @@ export const getUserRole = async (supabase: SupabaseClient<Database>) => {
   if (user && user.app_metadata.role === "admin") return "ADMIN";
   if (user && user.app_metadata.role === "manager") return "MANAGER";
   if (user) return "MEMBER";
+
   return "ANON";
 };
 
