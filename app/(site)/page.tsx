@@ -61,25 +61,6 @@ const Events: NextPage = async () => {
             {events.length > 0 && <div className="divider"></div>}
           </>
         )}
-        {/* {["MEMBER", "ANON"].includes(role) && (
-          <div className="flex flex-row justify-center items-center flex-wrap gap-6 lg:gap-4">
-            {events.map(({ id, title, description, image }) => (
-              <div className="card w-96 h-96 bg-primary shadow-xl">
-                <figure>
-                  <img
-                    src={image!}
-                    alt="Shoes"
-                  />
-                </figure>
-                <div className="card-body">
-                  <h2 className="card-title">{title}</h2>
-                  <p>{description}</p>
-                  <div className="card-actions justify-end"></div>
-                </div>
-              </div>
-            ))}
-          </div>
-        )} */}
       </div>
     </section>
   );

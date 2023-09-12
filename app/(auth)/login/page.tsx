@@ -1,6 +1,6 @@
 /** @format */
 
-import { Messages } from "@/components";
+import { Messages, ScanQrCode } from "@/components";
 
 export default function Login() {
   return (
@@ -15,9 +15,9 @@ export default function Login() {
               et a id nisi.
             </p>
           </div>
-          <div className="card flex-shrink-0 w-full max-w-xl shadow-2xl bg-base-100">
+          <div className="card flex-shrink-0 min-h-[400px] w-full max-w-xl shadow-2xl bg-base-100">
             <div className="card-body">
-              <form
+              {/* <form
                 action="/auth/sign-in"
                 method="post"
               >
@@ -60,7 +60,8 @@ export default function Login() {
                   </button>
                 </div>
                 <Messages />
-              </form>
+              </form> */}
+              <ScanQrCode />
             </div>
           </div>
         </div>

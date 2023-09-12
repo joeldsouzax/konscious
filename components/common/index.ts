@@ -7,3 +7,4 @@ export { default as Card } from "./Card";
 export { default as Alert } from "./Alert";
 export { default as CardList } from "./CardList";
 export { default as EventList } from "./EventList";
+export { default as ScanQrCode } from "./ScanQrCode";

@@ -11,6 +11,7 @@
     "@supabase/auth-helpers-nextjs": "latest",
     "@supabase/supabase-js": "latest",
     "autoprefixer": "10.4.14",
+    "html5-qrcode": "^2.3.8",
     "luxon": "^3.4.2",
     "next": "latest",
     "postcss": "8.4.24",
