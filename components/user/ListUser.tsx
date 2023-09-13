@@ -14,14 +14,15 @@ const ListUser: React.FC<ListEventsProps> = ({ users }) => {
     <table className="table table-sm border-collapse">
       <thead>
         <tr>
-          <th>First Name</th>
-          <th>Last Name</th>
-          <th>Birth Date</th>
-          <th>Actions</th>
+          <th className="text-lg">First Name</th>
+          <th className="text-lg">Last Name</th>
+          <th className="text-lg">Birth Date</th>
+          <th className="text-lg">Admin</th>
+          <th className="text-lg">Actions</th>
         </tr>
       </thead>
       <tbody>
-        {users.map(({ id, last_name, first_name, birth_date }) => (
+        {users.map(({ id, last_name, first_name, birth_date, user_type }) => (
           <tr key={id}>
             <td className="max-w-[160px] truncate text-ellipsis overflow-hidden">
               <Link
@@ -39,6 +40,13 @@ const ListUser: React.FC<ListEventsProps> = ({ users }) => {
               {DateTime.fromISO(birth_date!)
                 .setLocale("tr")
                 .toLocaleString(DateTime.DATE_FULL)}
+            </td>
+            <td className="max-w-[160px] truncate text-ellipsis overflow-hidden">
+              {user_type === "ADMIN" ? (
+                <div className="badge badge-accent">YES</div>
+              ) : (
+                <div className="badge badge-secondary">NO</div>
+              )}
             </td>
             <td>
               <ul className="menu menu-horizontal bg-base-200 rounded-box">

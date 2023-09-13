@@ -126,6 +126,7 @@ export interface Database {
           id: string
           last_name: string | null
           updated_at: string | null
+          user_type: Database["public"]["Enums"]["user_type"] | null
         }
         Insert: {
           birth_date?: string | null
@@ -133,6 +134,7 @@ export interface Database {
           id: string
           last_name?: string | null
           updated_at?: string | null
+          user_type?: Database["public"]["Enums"]["user_type"] | null
         }
         Update: {
           birth_date?: string | null
@@ -140,6 +142,7 @@ export interface Database {
           id?: string
           last_name?: string | null
           updated_at?: string | null
+          user_type?: Database["public"]["Enums"]["user_type"] | null
         }
         Relationships: [
           {
@@ -230,7 +233,15 @@ export interface Database {
       }
     }
     Enums: {
-      [_ in never]: never
+      user_type:
+        | "EXHIBITOR"
+        | "PRESS"
+        | "CELEBRITY"
+        | "PARTICIPANT"
+        | "PROTOCOL"
+        | "VIP"
+        | "ADMIN"
+        | "PUBLIC"
     }
     CompositeTypes: {
       [_ in never]: never

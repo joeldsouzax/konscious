@@ -24,7 +24,8 @@ export async function POST(request: Request) {
   const last_name = String(formData.get("last_name"));
   const email = String(formData.get("email"));
   const birth_date = String(formData.get("birth_date"));
-
+  const adminType = String(formData.get("admin_type"));
+  const memberType = formData.get("member_type");
   const password = birth_date.replaceAll("-", "") + first_name.toLowerCase();
 
   const { data: user, error: userError } =
@@ -36,22 +37,47 @@ export async function POST(request: Request) {
         first_name,
         last_name,
         birth_date,
+        user_type: memberType ? String(memberType) : "ADMIN",
       },
     });
 
   if (user === null || userError) {
     return NextResponse.redirect(
-      `${requestUrl.origin}/user?error=Could not create the user`,
+      `${requestUrl.origin}/user?error=${userError?.message}`,
       {
         status: 301,
       }
     );
   }
 
-  // TODO: generate a qrcode and store it in the bucket as png
+  if (adminType) {
+    const { data: adminUser, error: adminError } = await setClaims(
+      user.user?.id,
+      "role",
+      adminType
+    );
+
+    if (adminUser === null || adminError) {
+      return NextResponse.redirect(
+        `${requestUrl.origin}/user?error=${adminError?.message}`,
+        {
+          status: 301,
+        }
+      );
+    }
+  }
 
   return NextResponse.redirect(`${requestUrl.origin}/user`, {
     // a 301 status is required to redirect from a POST to a GET route
     status: 301,
   });
 }
+
+const setClaims = async (uid: string, claim: string, value: string) => {
+  const { data, error } = await adminClient.rpc("set_claim", {
+    uid,
+    claim,
+    value,
+  });
+  return { data, error };
+};
