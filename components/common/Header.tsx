@@ -5,6 +5,7 @@ import { cookies } from "next/headers";
 import { BiSolidUserAccount, BiCategory, BiHome, BiUser } from "react-icons/bi";
 import Link from "next/link";
 import { getUserRole } from "@/app/(site)/action";
+import { crudUsers } from "@/util";
 
 const Header: React.FC = async () => {
   const supabase = createServerComponentClient<Database>({ cookies });
@@ -24,7 +25,7 @@ const Header: React.FC = async () => {
                 <BiHome />
               </Link>
             </li>
-            {role === "ADMIN" && (
+            {crudUsers.includes(role) && (
               <>
                 <li>
                   <Link
@@ -49,7 +50,7 @@ const Header: React.FC = async () => {
           </ul>
         </div>
         <div className="navbar-end">
-          {role === "ANON" ? (
+          {role === "anon" ? (
             <Link
               href="/login"
               className="btn btn-primary"
