@@ -9,6 +9,7 @@ import {
 import { revalidatePath } from "next/cache";
 import { cookies } from "next/headers";
 import { getUserRole } from "../action";
+import { crudUsers } from "@/util";
 
 export async function deleteCategory(id: number) {
   const supabase = createServerComponentClient<Database>({ cookies });
@@ -18,7 +19,7 @@ export async function deleteCategory(id: number) {
 
 export const getCategories = async (supabase: SupabaseClient<Database>) => {
   const role = await getUserRole(supabase);
-  if (role === "ADMIN") {
+  if (crudUsers.includes(role)) {
     const { data, error } = await supabase
       .from("category")
       .select()

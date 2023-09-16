@@ -4,12 +4,14 @@ import Link from "next/link";
 import { AiFillEye } from "react-icons/ai";
 import { DateTime } from "luxon";
 import DeleteUser from "./DeleteUser";
+import { AdminTypes } from "@/util";
 
 interface ListEventsProps {
   users: Array<Tables<"profiles">>;
+  role: AdminTypes;
 }
 
-const ListUser: React.FC<ListEventsProps> = ({ users }) => {
+const ListUser: React.FC<ListEventsProps> = ({ users, role }) => {
   if (users.length === 0) return null;
   return (
     <table className="table table-sm border-collapse">
@@ -51,9 +53,11 @@ const ListUser: React.FC<ListEventsProps> = ({ users }) => {
             </td>
             <td>
               <ul className="menu menu-horizontal bg-base-200 rounded-box">
-                <li>
-                  <DeleteUser id={id} />
-                </li>
+                {role === "admin" && (
+                  <li>
+                    <DeleteUser id={id} />
+                  </li>
+                )}
                 <li>
                   <Link href={"/user/" + id}>
                     <AiFillEye />

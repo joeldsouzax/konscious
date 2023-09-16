@@ -11,7 +11,7 @@ import {
 import { redirect } from "next/navigation";
 import { getEventIdsAndTitle, getEvents, getUserRole } from "../../action";
 import { AddEvent, Card, CardList, EventList } from "@/components";
-import { normalUsers } from "@/util";
+import { crudUsers, normalUsers } from "@/util";
 
 interface EventPageProps {
   params: { id: Array<string> };
@@ -42,7 +42,7 @@ const EventPage: NextPage<EventPageProps> = async ({ params }) => {
         <p>{data.description}</p>
       </article>
       <div className="divider" />
-      {role === "ADMIN" && (
+      {crudUsers.includes(role) && (
         <>
           <h1>Events</h1>
           <div className="flex flex-row">

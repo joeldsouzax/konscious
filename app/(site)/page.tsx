@@ -12,12 +12,12 @@ import {
   Messages,
 } from "@/components";
 import { getEvents, getRootCategories, getUserRole } from "./action";
-import { AdminTypes } from "@/util";
+import { AdminTypes, adminUsers, crudUsers, normalUsers } from "@/util";
 
 const Events: NextPage = async () => {
   const supabase = createServerComponentClient<Database>({ cookies });
   const role = await getUserRole(supabase);
-  if (["anon", "member"].includes(role)) {
+  if (normalUsers.includes(role)) {
     const categories = await getRootCategories(supabase);
     return (
       <section className="container px-2 mt-10 max-w-6xl">
@@ -44,7 +44,7 @@ const Events: NextPage = async () => {
   return (
     <section className="container px-2 mt-10 max-w-6xl">
       <div className="flex flex-col gap-4 mx-auto">
-        {["admin", "manager"].includes(role) && (
+        {crudUsers.includes(role) && (
           <>
             <Collapsible
               label="Create Event"
@@ -56,7 +56,7 @@ const Events: NextPage = async () => {
             <div className="divider"></div>
           </>
         )}
-        {["admin", "manager", "controller"].includes(role) && (
+        {adminUsers.includes(role) && (
           <>
             <ListEvents
               events={events}

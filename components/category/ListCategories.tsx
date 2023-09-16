@@ -4,12 +4,17 @@ import DeleteCategory from "./DeleteCategory";
 import { twMerge } from "tailwind-merge";
 import { AiFillEye } from "react-icons/ai";
 import Link from "next/link";
+import { AdminTypes } from "@/util";
 
 interface ListCategoriesProps {
   categories: Array<Tables<"category">>;
+  role: AdminTypes;
 }
 
-const ListCategories: React.FC<ListCategoriesProps> = ({ categories }) => {
+const ListCategories: React.FC<ListCategoriesProps> = ({
+  categories,
+  role,
+}) => {
   if (categories.length === 0) return null;
   return (
     <table className="table table-sm border-collapse">
@@ -44,9 +49,11 @@ const ListCategories: React.FC<ListCategoriesProps> = ({ categories }) => {
             </td>
             <td>
               <ul className="menu menu-horizontal bg-base-200 rounded-box">
-                <li>
-                  <DeleteCategory id={category.id} />
-                </li>
+                {role === "admin" && (
+                  <li>
+                    <DeleteCategory id={category.id} />
+                  </li>
+                )}
                 <li>
                   <Link href={"/category/" + category.id}>
                     <AiFillEye />

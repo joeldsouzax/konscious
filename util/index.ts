@@ -1,9 +1,10 @@
 import { Database, Enums } from "@/types";
-import { createClient } from "@supabase/supabase-js";
 
 export * from "./qrcodegen";
 
-export const normalUsers = ["MEMBER", "ANON"];
+export const normalUsers = ["member", "anon"];
+export const crudUsers = ["admin", "manager"];
+export const adminUsers = ["admin", "manager", "controller"];
 
 export const memberTypes: Array<{ value: Enums<"user_type">; label: string }> =
   [
