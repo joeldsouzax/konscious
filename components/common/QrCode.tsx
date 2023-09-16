@@ -1,12 +1,9 @@
 "use client";
 import * as React from "react";
 import { Ecc, QrCode as QrCodeEngine } from "@/util";
+import { UserData } from "@/types";
 
-interface QrCodeProps {
-  id: string;
-  hash: string;
-  email: string;
-}
+interface QrCodeProps extends UserData {}
 
 const QrCode: React.FC<QrCodeProps> = (props) => {
   const [loading, setLoading] = React.useState(true);

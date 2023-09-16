@@ -1,6 +1,6 @@
 /** @format */
 
-import { Messages, ScanQrCode } from "@/components";
+import { LoginScan, Messages } from "@/components";
 
 export default function Login() {
   return (
@@ -9,11 +9,7 @@ export default function Login() {
         <div className="hero-content flex-col lg:flex-row-reverse">
           <div className="text-center lg:text-left">
             <h1 className="text-5xl font-bold">Login now!</h1>
-            <p className="py-6">
-              Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda
-              excepturi exercitationem quasi. In deleniti eaque aut repudiandae
-              et a id nisi.
-            </p>
+            <p className="py-6">Scan Qr Code to login</p>
           </div>
           <div className="card flex-shrink-0 min-h-[400px] w-full max-w-xl shadow-2xl bg-base-100">
             <div className="card-body">
@@ -61,7 +57,8 @@ export default function Login() {
                 </div>
                 <Messages />
               </form> */}
-              <ScanQrCode />
+              <LoginScan />
+              <Messages />
             </div>
           </div>
         </div>
