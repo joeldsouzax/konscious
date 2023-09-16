@@ -33,8 +33,6 @@ const EventPage: NextPage<EventPageProps> = async ({ params }) => {
     .filter((r) => r.event !== null)
     .map((r) => r.event);
 
-  console.log(categoryEvents);
-
   return (
     <section className="container max-w-6xl mt-10 flex flex-col gap-1 px-4 lg:px-0">
       <article className="prose">

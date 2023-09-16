@@ -18,7 +18,7 @@ interface EventPageProps {
 const EventPage: NextPage<EventPageProps> = async ({ params }) => {
   const supabase = createServerComponentClient<Database>({ cookies });
   const role = await getUserRole(supabase);
-  if (!(role === "ADMIN")) redirect("/");
+  if (!["admin", "manager"].includes(role)) redirect("/");
 
   const user = await getUser(params.id);
 

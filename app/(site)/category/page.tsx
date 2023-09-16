@@ -23,7 +23,7 @@ const Index: NextPage = async () => {
   // get role of the user
   const role = await getUserRole(supabase);
 
-  if (normalUsers.includes(role)) redirect("/");
+  if (!crudUsers.includes(role)) redirect("/");
 
   return (
     <div className="container max-w-6xl mt-10 flex flex-col gap-4 mx-auto">
