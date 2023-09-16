@@ -4,9 +4,11 @@ import * as React from "react";
 import { Html5QrcodeScanner } from "html5-qrcode";
 import { UserData } from "@/types";
 
-interface CheckInQrCodeProps {}
+interface CheckInQrCodeProps {
+  id: number;
+}
 
-const CheckInQrCode: React.FC<CheckInQrCodeProps> = () => {
+const CheckInQrCode: React.FC<CheckInQrCodeProps> = ({ id }) => {
   React.useEffect(() => {
     let html5QrcodeScanner = new Html5QrcodeScanner(
       "reader",

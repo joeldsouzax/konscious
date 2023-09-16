@@ -49,7 +49,11 @@ const EventPage: NextPage<EventPageProps> = async ({ params }) => {
             layout="fill"
           />
         </div>
-        {["admin", "manager", "controller"].includes(role) && <CheckInQrCode />}
+      </section>
+      <section className="container px-2 mt-10 max-w-6xl">
+        {["admin", "manager", "controller"].includes(role) && (
+          <CheckInQrCode id={data.id} />
+        )}
       </section>
     </>
   );
