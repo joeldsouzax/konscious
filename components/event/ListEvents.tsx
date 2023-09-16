@@ -5,12 +5,14 @@ import { twMerge } from "tailwind-merge";
 import Link from "next/link";
 import { AiFillEye } from "react-icons/ai";
 import { DateTime } from "luxon";
+import { AdminTypes } from "@/util";
 
 interface ListEventsProps {
   events: Array<Tables<"event">>;
+  role: AdminTypes;
 }
 
-const ListEvents: React.FC<ListEventsProps> = ({ events }) => {
+const ListEvents: React.FC<ListEventsProps> = ({ events, role }) => {
   if (events.length === 0) return null;
   return (
     <table className="table table-sm border-collapse">
@@ -83,9 +85,11 @@ const ListEvents: React.FC<ListEventsProps> = ({ events }) => {
               </td>
               <td>
                 <ul className="menu menu-horizontal bg-base-200 rounded-box">
-                  <li>
-                    <DeleteEvent id={id} />
-                  </li>
+                  {role === "admin" && (
+                    <li>
+                      <DeleteEvent id={id} />
+                    </li>
+                  )}
                   <li>
                     <Link href={"/" + id}>
                       <AiFillEye />

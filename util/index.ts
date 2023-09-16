@@ -16,11 +16,17 @@ export const memberTypes: Array<{ value: Enums<"user_type">; label: string }> =
     { value: "VIP", label: "VIP Card Holder" },
   ];
 
-export const adminTypes = ["ADMIN", "MANAGER", "CONTROLLER"] as const;
+export const adminTypes = [
+  "admin",
+  "manager",
+  "controller",
+  "anon",
+  "member",
+] as const;
 export type AdminTypes = (typeof adminTypes)[number];
 
 export const adminOptions: Array<{ value: AdminTypes; label: string }> = [
-  { value: "ADMIN", label: "Admin" },
-  { value: "MANAGER", label: "Manager" },
-  { value: "CONTROLLER", label: "Controller" },
+  { value: "admin", label: "Admin" },
+  { value: "manager", label: "Manager" },
+  { value: "controller", label: "Controller" },
 ];

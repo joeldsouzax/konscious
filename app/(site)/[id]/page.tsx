@@ -6,7 +6,8 @@ import { getEvent } from "./action";
 import { redirect } from "next/navigation";
 import Image from "next/image";
 import { DateTime } from "luxon";
-import { AddressMap } from "@/components";
+import { AddressMap, CheckInQrCode } from "@/components";
+import { getUserRole } from "../action";
 
 interface EventPageProps {
   params: { id: string };
@@ -15,6 +16,7 @@ interface EventPageProps {
 const EventPage: NextPage<EventPageProps> = async ({ params }) => {
   const supabase = createServerComponentClient<Database>({ cookies });
   const data = await getEvent(supabase, params.id);
+  const role = await getUserRole(supabase);
 
   // return to home page when that event does not exist
   if (!data) redirect("/");
@@ -47,6 +49,7 @@ const EventPage: NextPage<EventPageProps> = async ({ params }) => {
             layout="fill"
           />
         </div>
+        {["admin", "manager", "controller"].includes(role) && <CheckInQrCode />}
       </section>
     </>
   );

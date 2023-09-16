@@ -2,6 +2,7 @@
 "use server";
 
 import { Database } from "@/types";
+import { AdminTypes } from "@/util";
 import {
   SupabaseClient,
   createServerComponentClient,
@@ -42,17 +43,20 @@ export const getEventIdsAndTitle = async (
   return data ?? [];
 };
 
-export const getUserRole = async (supabase: SupabaseClient<Database>) => {
+export const getUserRole = async (
+  supabase: SupabaseClient<Database>
+): Promise<AdminTypes> => {
   const {
     data: { user },
     error: userError,
   } = await supabase.auth.getUser();
 
-  if (user && user.app_metadata.role === "admin") return "ADMIN";
-  if (user && user.app_metadata.role === "manager") return "MANAGER";
-  if (user) return "MEMBER";
+  if (user && user.app_metadata.role === "admin") return "admin";
+  if (user && user.app_metadata.role === "manager") return "manager";
+  if (user && user.app_metadata.role === "controller") return "controller";
+  if (user) return "member";
 
-  return "ANON";
+  return "anon";
 };
 
 export const getRootCategories = async (supabase: SupabaseClient<Database>) => {
