@@ -1,11 +1,6 @@
 "use server";
+
 import { Database } from "@/types";
-import {
-  SupabaseClient,
-  createServerComponentClient,
-} from "@supabase/auth-helpers-nextjs";
-import { revalidatePath } from "next/cache";
-import { cookies } from "next/headers";
 import { createClient } from "@supabase/supabase-js";
 
 const adminClient = createClient<Database>(

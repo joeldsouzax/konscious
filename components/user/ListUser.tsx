@@ -3,6 +3,7 @@ import * as React from "react";
 import Link from "next/link";
 import { AiFillEye } from "react-icons/ai";
 import { DateTime } from "luxon";
+import DeleteUser from "./DeleteUser";
 
 interface ListEventsProps {
   users: Array<Tables<"profiles">>;
@@ -50,7 +51,9 @@ const ListUser: React.FC<ListEventsProps> = ({ users }) => {
             </td>
             <td>
               <ul className="menu menu-horizontal bg-base-200 rounded-box">
-                <li></li>
+                <li>
+                  <DeleteUser id={id} />
+                </li>
                 <li>
                   <Link href={"/user/" + id}>
                     <AiFillEye />

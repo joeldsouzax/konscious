@@ -50,10 +50,9 @@ Please file feedback and issues over on the [Supabase GitHub org](https://github
 
 
 ## MAJOR TASKS
-- delete user for admin
 - login with qr code 
 - scan qr code by managers
-- show events in a really good way (calendar view or whatever)
+- download qr code
 - internationalize
 
 # good to do

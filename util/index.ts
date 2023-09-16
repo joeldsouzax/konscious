@@ -1,4 +1,5 @@
 import { Database, Enums } from "@/types";
+import { createClient } from "@supabase/supabase-js";
 
 export * from "./qrcodegen";
 
