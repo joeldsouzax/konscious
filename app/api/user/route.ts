@@ -3,6 +3,7 @@ import { createRouteHandlerClient } from "@supabase/auth-helpers-nextjs";
 import { createClient } from "@supabase/supabase-js";
 import { cookies } from "next/headers";
 import { NextResponse } from "next/server";
+import { use } from "react";
 
 export const dynamic = "force-dynamic";
 
@@ -18,6 +19,11 @@ const adminClient = createClient<Database>(
 );
 
 export async function POST(request: Request) {
+  const supabase = createRouteHandlerClient<Database>({ cookies });
+
+  const { data: user } = await supabase.auth.getUser();
+
+  console.log(user);
   const requestUrl = new URL(request.url);
   const formData = await request.formData();
   const first_name = String(formData.get("first_name"));
@@ -54,15 +60,14 @@ export async function POST(request: Request) {
         );
       }
 
-      // create the admin role based on the admin type
-      const { data: adminClaim, error: adminClaimError } = await setClaims(
-        adminUser.user?.id,
-        "role",
-        adminType
+      const { data: adminClaim, error: adminClaimError } = await supabase.rpc(
+        "set_claim",
+        {
+          uid: adminUser.user?.id,
+          claim: "role",
+          value: adminType,
+        }
       );
-
-      console.log(adminClaim);
-      console.log(adminClaimError);
 
       if (adminClaim === null || adminClaimError) {
         return NextResponse.redirect(
