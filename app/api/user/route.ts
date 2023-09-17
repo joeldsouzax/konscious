@@ -61,6 +61,9 @@ export async function POST(request: Request) {
         adminType
       );
 
+      console.log(adminClaim);
+      console.log(adminClaimError);
+
       if (adminClaim === null || adminClaimError) {
         return NextResponse.redirect(
           `${requestUrl.origin}/user?error=${adminClaimError?.message}`,

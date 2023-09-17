@@ -17,6 +17,7 @@ import { AdminTypes, adminUsers, crudUsers, normalUsers } from "@/util";
 const Events: NextPage = async () => {
   const supabase = createServerComponentClient<Database>({ cookies });
   const role = await getUserRole(supabase);
+
   if (normalUsers.includes(role)) {
     const categories = await getRootCategories(supabase);
     return (

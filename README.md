@@ -54,6 +54,7 @@ Please file feedback and issues over on the [Supabase GitHub org](https://github
 - scan qr code by managers
 - download qr code
 - internationalize
+- user_events rls policy
 
 # good to do
 - validate end time and start time
