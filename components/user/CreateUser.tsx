@@ -156,7 +156,7 @@ const UserForm: React.FC = () => {
             <input
               className="input input-bordered input-secondary"
               type="password"
-              name="password"
+              name="repeat_password"
               placeholder="••••••••"
               required
             />

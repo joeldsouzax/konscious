@@ -25,41 +25,77 @@ export async function POST(request: Request) {
   const email = String(formData.get("email"));
   const birth_date = String(formData.get("birth_date"));
   const adminType = String(formData.get("admin_type"));
-  const memberType = formData.get("member_type");
-  const password = birth_date.replaceAll("-", "") + first_name.toLowerCase();
-
-  const { data: user, error: userError } =
-    await adminClient.auth.admin.createUser({
-      email,
-      password,
-      email_confirm: true,
-      user_metadata: {
-        first_name,
-        last_name,
-        birth_date,
-        user_type: memberType ? String(memberType) : "ADMIN",
-      },
-    });
-
-  if (user === null || userError) {
-    return NextResponse.redirect(
-      `${requestUrl.origin}/user?error=${userError?.message}`,
-      {
-        status: 301,
-      }
-    );
-  }
 
   if (adminType) {
-    const { data: adminUser, error: adminError } = await setClaims(
-      user.user?.id,
-      "role",
-      adminType
-    );
+    const password = String(formData.get("password"));
+    const repeatPassword = String(formData.get("repeat_password"));
 
-    if (adminUser === null || adminError) {
+    // create admin user
+    if (password === repeatPassword) {
+      const { data: adminUser, error: adminError } =
+        await adminClient.auth.admin.createUser({
+          email,
+          password,
+          email_confirm: true,
+          user_metadata: {
+            first_name,
+            last_name,
+            birth_date,
+            user_type: "ADMIN",
+          },
+        });
+
+      if (adminUser === null || adminError) {
+        return NextResponse.redirect(
+          `${requestUrl.origin}/user?error=${adminError?.message}`,
+          {
+            status: 301,
+          }
+        );
+      }
+
+      // create the admin role based on the admin type
+      const { data: adminClaim, error: adminClaimError } = await setClaims(
+        adminUser.user?.id,
+        "role",
+        adminType
+      );
+
+      if (adminClaim === null || adminClaimError) {
+        return NextResponse.redirect(
+          `${requestUrl.origin}/user?error=${adminClaimError?.message}`,
+          {
+            status: 301,
+          }
+        );
+      }
+    } else {
       return NextResponse.redirect(
-        `${requestUrl.origin}/user?error=${adminError?.message}`,
+        `${requestUrl.origin}/user?error=password does not match`,
+        {
+          status: 301,
+        }
+      );
+    }
+  } else {
+    const memberType = String(formData.get("member_type"));
+    const password = birth_date.replaceAll("-", "") + first_name.toLowerCase();
+    const { data: user, error: userError } =
+      await adminClient.auth.admin.createUser({
+        email,
+        password,
+        email_confirm: true,
+        user_metadata: {
+          first_name,
+          last_name,
+          birth_date,
+          user_type: memberType,
+        },
+      });
+
+    if (user === null || userError) {
+      return NextResponse.redirect(
+        `${requestUrl.origin}/user?error=${userError?.message}`,
         {
           status: 301,
         }
