@@ -129,38 +129,40 @@ const UserForm: React.FC = () => {
         )}
       </div>
 
-      <div className="flex gap-2 flex-row">
-        <div className="form-control w-full">
-          <label
-            className="label"
-            htmlFor="password"
-          >
-            <span className="label-text">Password</span>
-          </label>
-          <input
-            className="input input-bordered input-secondary"
-            type="password"
-            name="password"
-            placeholder="••••••••"
-            required
-          />
+      {!isParticipant && (
+        <div className="flex gap-2 flex-row">
+          <div className="form-control w-full">
+            <label
+              className="label"
+              htmlFor="password"
+            >
+              <span className="label-text">Password</span>
+            </label>
+            <input
+              className="input input-bordered input-secondary"
+              type="password"
+              name="password"
+              placeholder="••••••••"
+              required
+            />
+          </div>
+          <div className="form-control w-full">
+            <label
+              className="label"
+              htmlFor="password"
+            >
+              <span className="label-text">Repeat Password</span>
+            </label>
+            <input
+              className="input input-bordered input-secondary"
+              type="password"
+              name="password"
+              placeholder="••••••••"
+              required
+            />
+          </div>
         </div>
-        <div className="form-control w-full">
-          <label
-            className="label"
-            htmlFor="password"
-          >
-            <span className="label-text">Repeat Password</span>
-          </label>
-          <input
-            className="input input-bordered input-secondary"
-            type="password"
-            name="password"
-            placeholder="••••••••"
-            required
-          />
-        </div>
-      </div>
+      )}
 
       <div className="self-center max-w-md w-full">
         <button className="btn btn-primary w-full">Submit</button>
