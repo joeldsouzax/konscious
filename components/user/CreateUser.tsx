@@ -128,7 +128,7 @@ const UserForm: React.FC = () => {
           </div>
         )}
       </div>
-      {/* 
+
       <div className="flex gap-2 flex-row">
         <div className="form-control w-full">
           <label
@@ -160,7 +160,7 @@ const UserForm: React.FC = () => {
             required
           />
         </div>
-      </div> */}
+      </div>
 
       <div className="self-center max-w-md w-full">
         <button className="btn btn-primary w-full">Submit</button>
