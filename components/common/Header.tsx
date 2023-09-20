@@ -12,8 +12,8 @@ const Header: React.FC = async () => {
   const role = await getUserRole(supabase);
 
   return (
-    <div className="navbar bg-base-200">
-      <header className="navbar container">
+    <div className="navbar">
+      <header className="navbar container h-10">
         <div className="navbar-start">
           <ul className="menu menu-horizontal px-1">
             <li>
