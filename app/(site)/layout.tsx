@@ -31,6 +31,10 @@ export default function RootLayout({
         >
           {children}
         </main>
+        <div className="divider" />
+        <footer className="footer footer-center pb-4">
+          <p className="text-sm">BODRUM TÜRK FILMLERI HAFTASI 2023</p>
+        </footer>
       </body>
     </html>
   );

@@ -1,22 +1,25 @@
 /** @format */
 
 import { Messages, UserLogin } from "@/components";
+import Image from "next/image";
 
 export default function Login() {
   return (
     <>
-      <div className="hero min-h-screen bg-base-200">
-        <div className="hero-content flex-col lg:flex-row-reverse">
-          <div className="text-center lg:text-left">
-            <h1 className="text-5xl font-bold">Login now!</h1>
-            <p className="py-6">Scan Qr Code to login</p>
-          </div>
-          <div className="card flex-shrink-0 min-h-[400px] w-full max-w-xl shadow-2xl bg-base-100">
-            <UserLogin />
-          </div>
-          <Messages />
+      <section className="flex flex-col-reverse justify-center items-center">
+        <div className="w-full flex flex-col items-center">
+          <Image
+            src={"/cover.jpeg"}
+            alt="bodrum-festival"
+            width={600}
+            height={200}
+          />
         </div>
-      </div>
+        <div className="card w-full md:w-96">
+          <UserLogin />
+        </div>
+        <Messages />
+      </section>
     </>
   );
 }
