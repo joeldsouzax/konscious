@@ -50,7 +50,6 @@ Please file feedback and issues over on the [Supabase GitHub org](https://github
 
 
 ## MAJOR TASKS
-- login with qr code 
 - scan qr code by managers
 - download qr code
 - internationalize

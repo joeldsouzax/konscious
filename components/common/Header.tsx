@@ -53,10 +53,9 @@ const Header: React.FC = async () => {
           {role === "anon" ? (
             <Link
               href="/login"
-              className="btn btn-primary"
+              className="link"
             >
-              <BiSolidUserAccount />
-              <p>Member Login</p>
+              <p>Sign in</p>
             </Link>
           ) : (
             <form
