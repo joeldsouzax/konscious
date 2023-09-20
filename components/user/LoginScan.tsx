@@ -33,9 +33,9 @@ const LoginScan: React.FC<LoginScanProps> = () => {
 
         // create password
         const password = document.createElement("input");
-        email.setAttribute("type", "password");
-        email.setAttribute("name", "password");
-        email.setAttribute("value", userData.hash);
+        password.setAttribute("type", "password");
+        password.setAttribute("name", "password");
+        password.setAttribute("value", userData.hash);
         form.appendChild(password);
 
         document.body.appendChild(form);

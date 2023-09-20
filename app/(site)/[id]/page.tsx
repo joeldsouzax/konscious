@@ -28,7 +28,7 @@ const EventPage: NextPage<EventPageProps> = async ({ params }) => {
         long={data.long!}
       />
       <section className="container max-w-6xl mt-10 flex flex-col lg:flex-row lg:justify-between lg:items-start gap-4 px-6 lg:px-2">
-        <article className="prose">
+        <article className="prose prose-slate prose-xs">
           <h1>{data.title}</h1>
           <p>{data.description}</p>
           <h3>
@@ -42,11 +42,12 @@ const EventPage: NextPage<EventPageProps> = async ({ params }) => {
               .toLocaleString(DateTime.DATETIME_FULL)}
           </h3>
         </article>
-        <div className="relative aspect-video min-w-[400px]">
+        <div className="w-full flex flex-col items-center">
           <Image
             src={data.image!}
             alt="event-image"
-            layout="fill"
+            width={600}
+            height={400}
           />
         </div>
       </section>

@@ -19,6 +19,8 @@ export async function POST(request: Request) {
   const imageFile: Blob = formData.get("event_image") as Blob;
   const lat = Number(formData.get("latitude"));
   const long = Number(formData.get("longitude"));
+  const address1 = String(formData.get("address1"));
+  const address2 = String(formData.get("address2"));
 
   const now = new Date();
   const eventDate = new Date(date);
@@ -65,6 +67,10 @@ export async function POST(request: Request) {
         event_end,
         image: uploadedData.publicUrl,
         lat,
+        address: {
+          address1,
+          address2,
+        },
         long,
       },
     ])

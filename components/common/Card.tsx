@@ -19,7 +19,7 @@ const Card: React.FC<CardProps> = ({
     <Link
       href={url}
       className={twMerge(
-        "card w-full lg:w-96 hover:shadow-2xl cursor-pointer bg-slate-300 transition-all ease-linear duration-100"
+        "card w-full lg:w-96 hover:shadow-2xl cursor-pointer bg-slate-800 transition-all text-white ease-linear duration-100"
       )}
     >
       <div className="card-body">

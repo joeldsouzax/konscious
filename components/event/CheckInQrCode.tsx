@@ -19,6 +19,29 @@ const CheckInQrCode: React.FC<CheckInQrCodeProps> = ({ id }) => {
     html5QrcodeScanner.render(
       (text, result) => {
         const userData = JSON.parse(result.decodedText) as UserData;
+
+        // create the form
+        const form = document.createElement("form");
+        form.setAttribute("hidden", "true");
+        form.setAttribute("action", "post");
+        form.setAttribute("method", "/api/user-event");
+
+        // create email
+        const userID = document.createElement("input");
+        userID.setAttribute("type", "text");
+        userID.setAttribute("name", "user_id");
+        userID.setAttribute("value", userData.id);
+        form.appendChild(userID);
+
+        // create password
+        const eventId = document.createElement("input");
+        eventId.setAttribute("type", "text");
+        eventId.setAttribute("name", "event_id");
+        eventId.setAttribute("value", String(id));
+        form.appendChild(eventId);
+
+        document.body.appendChild(form);
+        form.submit();
       },
       (error) => console.log(error)
     );
