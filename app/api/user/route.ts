@@ -30,6 +30,7 @@ export async function POST(request: Request) {
   const last_name = String(formData.get("last_name"));
   const email = String(formData.get("email"));
   const birth_date = String(formData.get("birth_date"));
+  const phone_number = String(formData.get("phone_number"));
   const adminType = String(formData.get("admin_type"));
 
   if (adminType) {
@@ -47,6 +48,7 @@ export async function POST(request: Request) {
             first_name,
             last_name,
             birth_date,
+            phone_number: phone_number.replace("+", "00"),
             user_type: "ADMIN",
           },
         });
@@ -97,6 +99,7 @@ export async function POST(request: Request) {
           first_name,
           last_name,
           birth_date,
+          phone_number: phone_number.replace("+", "00"),
           user_type: memberType,
         },
       });

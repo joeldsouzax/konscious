@@ -76,6 +76,22 @@ const UserForm: React.FC = () => {
             required
           />
         </div>
+        <div className="form-control w-full">
+          <label
+            htmlFor="phone_number"
+            className="label-text text-lg"
+          >
+            Phone Number
+          </label>
+          <input
+            type="tel"
+            id="phone_number"
+            name="phone_number"
+            className="input input-bordered input-primary w-full"
+            required
+          />
+        </div>
+
         {isParticipant ? (
           <div className="form-control w-full">
             <label
