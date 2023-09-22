@@ -63,3 +63,13 @@ Please file feedback and issues over on the [Supabase GitHub org](https://github
 - error pages
 - show which user went to which event on ui for admins
 - show users have been to these events
+
+
+
+
+
+## TODO
+- name of the member on QR CODE instead of email
+- remove birth date
+- make qr smaller
+- error message for admin qr code login

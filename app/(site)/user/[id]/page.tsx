@@ -25,9 +25,13 @@ const EventPage: NextPage<EventPageProps> = async ({ params }) => {
   if (user === null) return redirect("/user");
 
   return (
-    <section className="container px-6 mt-10 max-w-6xl flex flex-col mx-auto items-center justify-center content-center text-center lg:px-2 gap-4">
-      <article className="prose w-full animate-pulse ease-in-out">
-        <h1>{user.email}</h1>
+    <section className="container px-6 mt-10 max-w-6xl flex flex-col mx-auto items-center justify-center content-center text-center lg:px-2 gap-1">
+      <article className="prose w-full animate-pulse ease-in-out mb-0">
+        <div className="flex items-center w-full flex-col">
+          <h1 className="mb-0">
+            {user.user_metadata.first_name} {user.user_metadata.last_name}
+          </h1>
+        </div>
       </article>
       <QrCode
         email={user.email!}

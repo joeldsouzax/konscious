@@ -1,6 +1,7 @@
 import { Database } from "@/types";
 import { createRouteHandlerClient } from "@supabase/auth-helpers-nextjs";
 import { createClient } from "@supabase/supabase-js";
+import { Console } from "console";
 import { cookies } from "next/headers";
 import { NextResponse } from "next/server";
 import { use } from "react";
@@ -23,7 +24,6 @@ export async function POST(request: Request) {
 
   const { data: user } = await supabase.auth.getUser();
 
-  console.log(user);
   const requestUrl = new URL(request.url);
   const formData = await request.formData();
   const first_name = String(formData.get("first_name"));
@@ -33,7 +33,7 @@ export async function POST(request: Request) {
   const phone_number = String(formData.get("phone_number"));
   const adminType = String(formData.get("admin_type"));
 
-  if (adminType) {
+  if (adminType !== "null") {
     const password = String(formData.get("password"));
     const repeatPassword = String(formData.get("repeat_password"));
 

@@ -23,8 +23,8 @@ const CheckInQrCode: React.FC<CheckInQrCodeProps> = ({ id }) => {
         // create the form
         const form = document.createElement("form");
         form.setAttribute("hidden", "true");
-        form.setAttribute("action", "post");
-        form.setAttribute("method", "/api/user-event");
+        form.setAttribute("method", "post");
+        form.setAttribute("action", "/api/user-event");
 
         // create email
         const userID = document.createElement("input");

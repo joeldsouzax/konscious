@@ -7,7 +7,7 @@ interface QrCodeProps extends UserData {}
 
 const QrCode: React.FC<QrCodeProps> = (props) => {
   const [loading, setLoading] = React.useState(true);
-  const scale = 10;
+  const scale = 6;
   const border = 2;
   const darkColor = "#000000";
   const lightColor = "#FFFFFF";
@@ -21,8 +21,8 @@ const QrCode: React.FC<QrCodeProps> = (props) => {
     if (!canvas) return;
 
     const width: number = (qr.size + border * 2) * scale;
-    canvas.width = width;
-    canvas.height = width;
+    canvas.width = width; // width
+    canvas.height = width; // height
     let ctx = canvas.getContext("2d") as CanvasRenderingContext2D;
     for (let y = -border; y < qr.size + border; y++) {
       for (let x = -border; x < qr.size + border; x++) {
