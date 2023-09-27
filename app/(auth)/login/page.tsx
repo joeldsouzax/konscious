@@ -18,13 +18,14 @@ export default async function Login() {
     error: userError,
   } = await supabase.auth.getUser();
 
-  if (user) {
+  if (user !== null) {
     return redirect("/");
   }
 
   return (
     <>
       <section className="flex flex-col-reverse justify-center items-center">
+        {user && <div className="alert">{user}</div>}
         <div className="w-full flex flex-col items-center">
           <Link href={"/"}>
             <Image
