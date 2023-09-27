@@ -9,13 +9,12 @@ interface LoginScanProps {}
 const LoginScan: React.FC<LoginScanProps> = () => {
   const [loading, setLoading] = React.useState(false);
   const ref = React.useRef<HTMLDivElement>(null);
+  let html5QrcodeScanner = new Html5QrcodeScanner(
+    "reader",
+    { fps: 1, qrbox: { width: 400, height: 400 } },
+    /* verbose= */ false
+  );
   React.useEffect(() => {
-    let html5QrcodeScanner = new Html5QrcodeScanner(
-      "reader",
-      { fps: 1, qrbox: { width: 400, height: 400 } },
-      /* verbose= */ false
-    );
-
     html5QrcodeScanner.render(
       (text, result) => {
         setLoading(true);
