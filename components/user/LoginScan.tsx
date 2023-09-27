@@ -58,7 +58,7 @@ const LoginScan: React.FC<LoginScanProps> = () => {
   return (
     <>
       {loading ? (
-        <span className="loading-spinner"></span>
+        <span className="loading-spinner">Scanning QR Code</span>
       ) : (
         <div
           id="reader"

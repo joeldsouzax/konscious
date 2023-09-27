@@ -9,6 +9,7 @@ interface CheckInQrCodeProps {
 }
 
 const CheckInQrCode: React.FC<CheckInQrCodeProps> = ({ id }) => {
+  const [loading, setLoading] = React.useState(false);
   React.useEffect(() => {
     let html5QrcodeScanner = new Html5QrcodeScanner(
       "reader",
@@ -18,7 +19,9 @@ const CheckInQrCode: React.FC<CheckInQrCodeProps> = ({ id }) => {
 
     html5QrcodeScanner.render(
       (text, result) => {
+        setLoading(true);
         const userData = JSON.parse(result.decodedText) as UserData;
+        html5QrcodeScanner.pause();
 
         // create the form
         const form = document.createElement("form");
@@ -42,6 +45,10 @@ const CheckInQrCode: React.FC<CheckInQrCodeProps> = ({ id }) => {
 
         document.body.appendChild(form);
         form.submit();
+        setTimeout(() => {
+          setLoading(false);
+          html5QrcodeScanner.resume();
+        }, 1000);
       },
       (error) => console.log(error)
     );
@@ -55,10 +62,16 @@ const CheckInQrCode: React.FC<CheckInQrCodeProps> = ({ id }) => {
   }, []);
 
   return (
-    <div
-      id="reader"
-      className="w-full h-full"
-    />
+    <>
+      {loading ? (
+        <span className="loading-spinner">Scanning QR Code</span>
+      ) : (
+        <div
+          id="reader"
+          className="w-full h-full"
+        />
+      )}
+    </>
   );
 };
 
