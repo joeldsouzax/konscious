@@ -12,7 +12,7 @@ const CardList = <T extends object>({
   data,
   errorMessage,
 }: CardListProps<T>) => {
-  if (!(data.length > 0)) return <Alert message={errorMessage} />;
+  if (!(data.length > 0)) return null;
   return (
     <div className="flex flex-row flex-wrap gap-6 lg:gap-4">
       {data.map((item) => children(item))}

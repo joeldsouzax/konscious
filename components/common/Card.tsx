@@ -25,6 +25,12 @@ const Card: React.FC<CardProps> = ({
       <div className="card-body">
         <h2 className="card-title">{title}</h2>
         <p>{description}</p>
+        <Link
+          href={url}
+          className="btn btn-primary"
+        >
+          Program
+        </Link>
       </div>
     </Link>
   );

@@ -77,9 +77,9 @@ const EventPage: NextPage<EventPageProps> = async ({ params }) => {
       )}
 
       <div className="divider" />
-      <article className="prose mb-4">
+      {/* <article className="prose mb-4">
         <h1>Events</h1>
-      </article>
+      </article> */}
       <EventList events={categoryEvents as Array<Tables<"event">>} />
     </section>
   );
