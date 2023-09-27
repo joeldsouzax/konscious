@@ -7,10 +7,8 @@ import Image from "next/image";
 import { cookies } from "next/headers";
 import Link from "next/link";
 import { redirect } from "next/navigation";
-import { error } from "console";
 
 export const dynamic = "force-dynamic";
-export const revalidate = 0;
 export default async function Login() {
   const supabase = createServerComponentClient<Database>({ cookies });
   const {

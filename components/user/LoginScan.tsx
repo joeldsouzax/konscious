@@ -21,7 +21,7 @@ const LoginScan: React.FC<LoginScanProps> = () => {
       (text, result) => {
         setLoading(true);
         const userData = JSON.parse(result.decodedText) as UserData;
-        html5QrcodeScanner.pause();
+        html5QrcodeScanner.pause(true);
 
         if (ref.current) {
           const form = document.createElement("form");
@@ -47,9 +47,7 @@ const LoginScan: React.FC<LoginScanProps> = () => {
         // // create the form
 
         setTimeout(() => {
-          window.location.reload();
           setLoading(false);
-
           html5QrcodeScanner.resume();
         }, 1000);
       },
@@ -70,14 +68,10 @@ const LoginScan: React.FC<LoginScanProps> = () => {
       id="scan-form"
       ref={ref}
     >
-      {loading ? (
-        <span className="loading-spinner">Scanning QR Code</span>
-      ) : (
-        <div
-          id="reader"
-          className="w-full h-full"
-        />
-      )}
+      <div
+        id="reader"
+        className="w-full h-full"
+      />
     </div>
   );
 };
