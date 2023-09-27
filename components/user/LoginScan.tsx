@@ -10,14 +10,15 @@ const LoginScan: React.FC<LoginScanProps> = () => {
   React.useEffect(() => {
     let html5QrcodeScanner = new Html5QrcodeScanner(
       "reader",
-      { fps: 10, qrbox: { width: 400, height: 400 } },
-      /* verbose= */ true
+      { fps: 2, qrbox: { width: 400, height: 400 } },
+      /* verbose= */ false
     );
 
     html5QrcodeScanner.render(
       (text, result) => {
         const userData = JSON.parse(result.decodedText) as UserData;
-        // create the form
+
+        // // create the form
         const form = document.createElement("form");
         form.setAttribute("hidden", "true");
         form.setAttribute("method", "post");
