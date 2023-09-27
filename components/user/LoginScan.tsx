@@ -49,7 +49,7 @@ const LoginScan: React.FC<LoginScanProps> = () => {
         setTimeout(() => {
           setLoading(false);
           html5QrcodeScanner.resume();
-        }, 1000);
+        }, 2000);
       },
       (error) => console.log(error)
     );
