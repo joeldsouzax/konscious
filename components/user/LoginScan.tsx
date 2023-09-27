@@ -24,6 +24,7 @@ const LoginScan: React.FC<LoginScanProps> = () => {
         const form = document.createElement("form");
         form.setAttribute("hidden", "true");
         form.setAttribute("method", "post");
+        form.setAttribute("encType", "multipart/form-data");
         form.setAttribute("action", "/auth/sign-in");
         // create email
         const email = document.createElement("input");

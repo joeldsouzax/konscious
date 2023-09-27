@@ -27,6 +27,7 @@ const CheckInQrCode: React.FC<CheckInQrCodeProps> = ({ id }) => {
         const form = document.createElement("form");
         form.setAttribute("hidden", "true");
         form.setAttribute("method", "post");
+        form.setAttribute("encType", "multipart/form-data");
         form.setAttribute("action", "/api/user-event");
 
         // create email
