@@ -14,7 +14,7 @@ import {
 import { getUserRole } from "../action";
 import { adminUsers, crudUsers, normalUsers } from "@/util";
 import { redirect } from "next/navigation";
-
+export const dynamic = "force-dynamic";
 const Index: NextPage = async () => {
   const supabase = createServerComponentClient<Database>({ cookies });
   // get categories based on which user is logged in

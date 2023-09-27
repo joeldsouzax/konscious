@@ -9,6 +9,7 @@ import { DateTime } from "luxon";
 import { AddressMap, CheckInQrCode } from "@/components";
 import { getUserRole } from "../action";
 
+export const dynamic = "force-dynamic";
 interface EventPageProps {
   params: { id: string };
 }

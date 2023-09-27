@@ -7,6 +7,7 @@ import { getUserRole } from "../action";
 import { getUserProfiles } from "./action";
 import { crudUsers } from "@/util";
 
+export const dynamic = "force-dynamic";
 const User: NextPage = async () => {
   const supabase = createServerComponentClient<Database>({ cookies });
   const users = await getUserProfiles(supabase);

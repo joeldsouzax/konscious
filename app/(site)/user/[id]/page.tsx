@@ -15,6 +15,7 @@ interface EventPageProps {
 // TODO: show user info
 // TODO: show user qr code
 // TODO: make qr code downloadable
+export const dynamic = "force-dynamic";
 const EventPage: NextPage<EventPageProps> = async ({ params }) => {
   const supabase = createServerComponentClient<Database>({ cookies });
   const role = await getUserRole(supabase);

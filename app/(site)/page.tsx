@@ -15,6 +15,7 @@ import { getEvents, getRootCategories, getUserRole } from "./action";
 import { AdminTypes, adminUsers, crudUsers, normalUsers } from "@/util";
 import Image from "next/image";
 
+export const dynamic = "force-dynamic";
 const Events: NextPage = async () => {
   const supabase = createServerComponentClient<Database>({ cookies });
   const role = await getUserRole(supabase);

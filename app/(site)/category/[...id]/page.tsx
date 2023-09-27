@@ -17,6 +17,7 @@ interface EventPageProps {
   params: { id: Array<string> };
 }
 
+export const dynamic = "force-dynamic";
 const EventPage: NextPage<EventPageProps> = async ({ params }) => {
   const supabase = createServerComponentClient<Database>({ cookies });
   const currentCategory = params.id[params.id.length - 1];
