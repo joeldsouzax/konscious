@@ -7,6 +7,7 @@ import { UserData } from "@/types";
 interface LoginScanProps {}
 
 const LoginScan: React.FC<LoginScanProps> = () => {
+  const [loading, setLoading] = React.useState(false);
   React.useEffect(() => {
     let html5QrcodeScanner = new Html5QrcodeScanner(
       "reader",
@@ -16,8 +17,9 @@ const LoginScan: React.FC<LoginScanProps> = () => {
 
     html5QrcodeScanner.render(
       (text, result) => {
+        setLoading(true);
         const userData = JSON.parse(result.decodedText) as UserData;
-
+        html5QrcodeScanner.pause();
         // // create the form
         const form = document.createElement("form");
         form.setAttribute("hidden", "true");
@@ -37,6 +39,10 @@ const LoginScan: React.FC<LoginScanProps> = () => {
         form.appendChild(password);
         document.body.appendChild(form);
         form.submit();
+        setTimeout(() => {
+          setLoading(false);
+          html5QrcodeScanner.resume();
+        }, 1000);
       },
       (error) => console.log(error)
     );
@@ -50,10 +56,16 @@ const LoginScan: React.FC<LoginScanProps> = () => {
   }, []);
 
   return (
-    <div
-      id="reader"
-      className="w-full h-full"
-    />
+    <>
+      {loading ? (
+        <span className="loading-spinner"></span>
+      ) : (
+        <div
+          id="reader"
+          className="w-full h-full"
+        />
+      )}
+    </>
   );
 };
 
