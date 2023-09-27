@@ -69,7 +69,5 @@ Please file feedback and issues over on the [Supabase GitHub org](https://github
 
 
 ## TODO
-- name of the member on QR CODE instead of email
 - remove birth date
-- make qr smaller
 - error message for admin qr code login

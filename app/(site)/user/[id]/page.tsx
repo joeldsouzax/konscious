@@ -37,8 +37,10 @@ const EventPage: NextPage<EventPageProps> = async ({ params }) => {
         email={user.email!}
         id={user.id}
         hash={
-          `${user.user_metadata.birth_date}`.replaceAll("-", "") +
-          `${user.user_metadata.first_name}`.toLowerCase()
+          user.email?.includes("@inactivemachine.com")
+            ? user.user_metadata.phone_number!
+            : `${user.user_metadata.birth_date}`.replaceAll("-", "") +
+              `${user.user_metadata.first_name}`.toLowerCase()
         }
       />
     </section>

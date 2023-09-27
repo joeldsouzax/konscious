@@ -51,13 +51,16 @@ const UserForm: React.FC = () => {
       <div className="divider" />
       <div className="form-control w-52">
         <label className="cursor-pointer label">
-          <span className="label-text text-lg">Particpant?</span>
+          {!isParticipant && <span className="label-text text-lg">Admin</span>}
           <input
             type="checkbox"
             className="toggle toggle-accent toggle-lg"
             checked={isParticipant}
             onChange={(e) => handleParticipantToggle()}
           />
+          {isParticipant && (
+            <span className="label-text text-lg">Participant</span>
+          )}
         </label>
       </div>
       <div className="flex gap-2 flex-row">

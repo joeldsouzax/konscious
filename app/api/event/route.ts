@@ -35,12 +35,11 @@ export async function POST(request: Request) {
   //   );
   // }
 
-  // TODO: validate end time is not lesser than start time
-  // TODO: validate that lat and long is number
-
   const { data, error: uploadError } = await supabase.storage
     .from("event")
     .upload(imageFile.name, imageFile, { upsert: true });
+
+  console.log(uploadError);
 
   const { data: uploadedData } = await supabase.storage
     .from("event")
