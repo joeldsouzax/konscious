@@ -1,10 +1,27 @@
 /** @format */
 
 import { Messages, UserLogin } from "@/components";
+import { Database } from "@/types";
+import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
 import Image from "next/image";
+import { cookies } from "next/headers";
 import Link from "next/link";
+import { redirect } from "next/navigation";
+import { error } from "console";
 
-export default function Login() {
+export const dynamic = "force-dynamic";
+export const revalidate = 0;
+export default async function Login() {
+  const supabase = createServerComponentClient<Database>({ cookies });
+  const {
+    data: { user },
+    error: userError,
+  } = await supabase.auth.getUser();
+
+  if (user) {
+    return redirect("/");
+  }
+
   return (
     <>
       <section className="flex flex-col-reverse justify-center items-center">
