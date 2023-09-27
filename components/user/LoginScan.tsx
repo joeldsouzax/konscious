@@ -12,7 +12,7 @@ const LoginScan: React.FC<LoginScanProps> = () => {
   React.useEffect(() => {
     let html5QrcodeScanner = new Html5QrcodeScanner(
       "reader",
-      { fps: 2, qrbox: { width: 400, height: 400 } },
+      { fps: 1, qrbox: { width: 400, height: 400 } },
       /* verbose= */ false
     );
 
