@@ -19,6 +19,8 @@ export async function POST(request: Request) {
     .eq("event_id", event_id)
     .eq("user_id", user_id);
 
+  console.log(data, userEventsError);
+
   if (data !== null && data.length > 0) {
     return NextResponse.redirect(
       `${requestUrl.origin}/${event_id}?message=Member already scanned`,
@@ -32,6 +34,8 @@ export async function POST(request: Request) {
       .from("user_events")
       .insert([{ user_id, event_id }])
       .select();
+
+    console.log(error);
 
     if (error) {
       return NextResponse.redirect(

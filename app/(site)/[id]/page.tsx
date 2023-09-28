@@ -6,7 +6,7 @@ import { getEvent } from "./action";
 import { redirect } from "next/navigation";
 import Image from "next/image";
 import { DateTime } from "luxon";
-import { AddressMap, CheckInQrCode } from "@/components";
+import { AddressMap, CheckInQrCode, Messages } from "@/components";
 import { getUserRole } from "../action";
 
 export const dynamic = "force-dynamic";
@@ -24,6 +24,7 @@ const EventPage: NextPage<EventPageProps> = async ({ params }) => {
 
   return (
     <>
+      <Messages />
       <AddressMap
         lat={data.lat!}
         long={data.long!}
