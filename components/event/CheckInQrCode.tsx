@@ -21,7 +21,7 @@ const CheckInQrCode: React.FC<CheckInQrCodeProps> = ({ id }) => {
       (text, result) => {
         setLoading(true);
         const userData = JSON.parse(result.decodedText) as UserData;
-        html5QrcodeScanner.pause(true);
+        // html5QrcodeScanner.pause(true);
 
         // create the form
         const form = document.createElement("form");
