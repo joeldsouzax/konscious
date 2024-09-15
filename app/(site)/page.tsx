@@ -42,7 +42,7 @@ const Events: NextPage = async () => {
         </section>
         <div className="w-full md:w-96 transition-all ease-linear duration-150">
           <img
-            src="/carousel_1.jpeg"
+            src="/cover.jpg"
             className="w-full"
           />
         </div>
@@ -55,6 +55,7 @@ const Events: NextPage = async () => {
   return (
     <section className="container px-2 mt-10 max-w-6xl">
       <div className="flex flex-col gap-4 mx-auto">
+        coveco
         {crudUsers.includes(role) && (
           <>
             <Collapsible

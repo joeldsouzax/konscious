@@ -17,9 +17,7 @@ const QrCode: React.FC<QrCodeProps> = (props) => {
   React.useEffect(() => {
     const qr = QrCodeEngine.encodeText(JSON.stringify(props), errCorLvl);
     const canvas = canvasRef.current;
-
     if (!canvas) return;
-
     const width: number = (qr.size + border * 2) * scale;
     canvas.width = width; // width
     canvas.height = width; // height

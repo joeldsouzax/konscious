@@ -27,7 +27,7 @@ export default async function Login() {
         <div className="w-full flex flex-col items-center">
           <Link href={"/"}>
             <Image
-              src={"/cover.jpeg"}
+              src={"/cover.jpg"}
               alt="bodrum-festival"
               width={600}
               height={200}
