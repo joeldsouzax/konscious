@@ -21,7 +21,7 @@ const LoginScan: React.FC<LoginScanProps> = () => {
       (text, result) => {
         setLoading(true);
         const userData = JSON.parse(result.decodedText) as UserData;
-        html5QrcodeScanner.pause(true);
+        // html5QrcodeScanner.pause(true);
 
         if (ref.current) {
           const form = document.createElement("form");
